@@ -73,6 +73,7 @@ public class GClient_in extends Thread {
                                 is_login_ok = true;
                                 client_out.SendAutorizationResault((byte)1);
                                 character = ob;
+                                client_out.SetChar(ob);
                             }
 
                         if(!is_login_ok)
@@ -89,7 +90,6 @@ public class GClient_in extends Thread {
 
 
         }
-
 
 
         while(player_socket.isConnected())
