@@ -45,4 +45,9 @@ public abstract class StaticObject extends BaseObject {
         return pos;
     }
 
+    public Vec3d GetLookVec()
+    {
+        return look_vector;
+    }
+
 }

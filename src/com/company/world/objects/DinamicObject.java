@@ -58,4 +58,9 @@ public abstract class DinamicObject extends StaticObject {
         work_dist += w;
     }
 
+    public Vec3d GetVelVec()
+    {
+        return vel;
+    }
+
 }
