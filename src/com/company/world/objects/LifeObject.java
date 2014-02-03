@@ -73,7 +73,8 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
                     meat == 0)
             {
                 //Console.WriteLine("death");
-                Destroy();
+                if(!(this instanceof CharacterObject))
+                    Destroy();
 
                 is_alive = false;
 

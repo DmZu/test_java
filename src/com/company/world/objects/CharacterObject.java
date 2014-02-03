@@ -38,7 +38,7 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
         time_to_message-=time_sec;
         if(time_to_message<=0)
         {
-            World.Inst().TextMessage("POS="+GetPos());
+            //World.Inst().TextMessage("POS="+GetPos());
             time_to_message = 0.3d;
         }
     }
@@ -50,7 +50,7 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
 
     public boolean IsPass(String pass)
     {
-        if(pass == char_pass)
+        if(pass.equals(char_pass))
             return true;
         else
             return false;

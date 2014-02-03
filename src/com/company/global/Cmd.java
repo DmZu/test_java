@@ -53,26 +53,26 @@ public class Cmd {
 
     public enum TcpClient
     {
-        Version ((byte)-127, (short)9),
+        Version ((byte)1, (short)9),
 
-        AutorizCli ((byte)-126, (short)81),
+        AutorizCli ((byte)2, (short)81),
 
-        RegistrCli ((byte)-125, (short)82),
+        RegistrCli ((byte)3, (short)82),
 
         /// <summary>
         /// len 33
         /// X[8] Y[8] Z[8] AX[8] AY[8] AZ[8] VX[8] VY[8] VX[8]
         /// The position XY z_ A z_ VXY.
         /// </summary>
-        PosXYZ_AXYZ_VXYZ ((byte)-105, (short)73),
+        PosXYZ_AXYZ_VXYZ ((byte)24, (short)73),
 
+        LandInfo ((byte)60, (short)9),
+        LandData ((byte)63, (short)1025),
 
-        LandData ((byte)-104, (short)1025),
+        CharMove ((byte)27, (short)9),
+        CharLookTo ((byte)28, (short)9),
 
-        CharMove ((byte)-103, (short)9),
-        CharLookTo ((byte)-102, (short)9),
-
-        unknown((byte)-128, (short)0);
+        unknown((byte)0, (short)0);
 
 
         private byte val;
@@ -81,7 +81,7 @@ public class Cmd {
 
         private TcpClient(byte value, short length)
         {
-            this.val = val;
+            this.val = value;
             this.len = length;
         }
 

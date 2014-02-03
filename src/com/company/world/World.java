@@ -40,6 +40,7 @@ public class World extends Thread implements IAdmin {
 
     public void Create(String name, short size)
     {
+
         Land_Matrix = com.company.world.LandMethods.GenerateLandMatrix(size);
         com.company.world.LandMethods.GenerateAnimals(size,size*5);
 
@@ -56,10 +57,13 @@ public class World extends Thread implements IAdmin {
         day_time_now = 0;
 
         TextMessage("Created Land. Name: " + name + " Size: " + size);
+
     }
 
     public void Start(String name)
     {
+
+
         Land_objects = new ObjectsThread(Land_Matrix);
 
         Animal_objects = new ObjectsThread();
@@ -84,8 +88,8 @@ public class World extends Thread implements IAdmin {
 
 
         this.start();
-
         new WorldServer();
+
     }
 
     @Override
@@ -159,10 +163,11 @@ public class World extends Thread implements IAdmin {
         while(ob != null)
         {
             ob = (CharacterObject)Char_objects.Get(i);
-            if(ob.GetName() == name)
-                return ob;
+            if(ob == null || ob.GetName().equals(name))
+                break;
+            i++;
         }
 
-        return null;
+        return ob;
     }
 }

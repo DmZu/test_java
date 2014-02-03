@@ -17,6 +17,8 @@ public abstract class Const {
 
     public static final int kilogram_size = 1000;
 
-    public static final int kvadrat_size = 64;
+    public static final int kvadrat_size = 2;
+
+    public static final int TCPServerPort = 10011;
 
 }

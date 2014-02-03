@@ -1,5 +1,7 @@
 package com.company.server;
 
+import com.company.global.Const;
+
 import java.net.InetAddress;
 import java.net.ServerSocket;
 
@@ -20,9 +22,9 @@ public class WorldServer extends Thread {
         {
             int i = 0; // счётчик подключений
 
-            // привинтить сокет на локалхост, порт 3128
-            ServerSocket server = new ServerSocket(3128, 0,
-                    InetAddress.getByName("localhost"));
+
+            ServerSocket server = new ServerSocket(Const.TCPServerPort/*, 0,
+                    InetAddress.getByName("localhost")*/);
 
             System.out.println("server is started");
 

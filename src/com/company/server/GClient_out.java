@@ -20,6 +20,8 @@ public class GClient_out extends Thread {
     private OutputStream out_s;
     private CharacterObject character;
 
+    private int cur_kvad_x = -3200000, cur_kvad_y = -3200000;
+
     public GClient_out(Socket cli_socket)
     {
         player_socket = cli_socket;
@@ -34,17 +36,27 @@ public class GClient_out extends Thread {
 
     public void run()
     {
+        SendLandInfo();
+        /*
+        try {
+            Thread.currentThread().sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        */
         while(player_socket.isConnected())
         {
+
+            SendLandDATA();
             try {
-                Thread.currentThread().sleep(1000);
+                Thread.currentThread().sleep(1000000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            SendCurPosLookVel();
+            //SendCurPosLookVel();
 
-
+            //
         }
 
     }
@@ -71,18 +83,45 @@ public class GClient_out extends Thread {
         );
     }
 
-    public void SendLandDATA(short start_x, short start_y)
+    public void SendLandInfo()
     {
-        ByteBuffer buf = ByteBuffer.allocate(5 + Const.kvadrat_size * Const.kvadrat_size);
+        ByteBuffer buf = ByteBuffer.allocate(4);
+        buf.put(Cmd.TcpClient.LandInfo.ToByte());
+        buf.put(World.Inst().GetDayTimeNow());
+        buf.put((byte)Const.kvadrat_size);
+        buf.put((byte)Const.meters_in_cell_xy);
+        Send(buf);
+    }
+
+    private void SendLandDATA()
+    {
+        int x = (character.GetCellX()/Const.kvadrat_size);
+        int y = (character.GetCellY()/Const.kvadrat_size);
+
+        for(short ix=-1; ix < 2; ix++)
+            for(short iy=-1; iy < 2; iy++)
+                if(Math.abs(x + ix - cur_kvad_x)>=2 || Math.abs(y + iy - cur_kvad_y)>=2)
+                    SendLandDATA(x+ix, y+iy);
+
+        cur_kvad_x = x;
+        cur_kvad_y = y;
+    }
+
+    private void SendLandDATA(int kvadrat_x, int kvadrat_y)
+    {
+        ByteBuffer buf = ByteBuffer.allocate(3 + (Const.kvadrat_size+1)*(Const.kvadrat_size+1) * 2);
         buf.put(Cmd.TcpClient.LandData.ToByte());
 
-        buf.putShort(start_x);
-        buf.putShort(start_y);
+        buf.put((byte) kvadrat_x);
+        buf.put((byte) kvadrat_y);
 
-        for(short ix=0; ix < Const.kvadrat_size; ix++)
-            for(short iy=0; iy < Const.kvadrat_size; iy++)
+        for(short ix=0; ix < Const.kvadrat_size+1; ix++)
+            for(short iy=0; iy < Const.kvadrat_size+1; iy++)
             {
-                LandObject cell = World.Inst().GetLandCell((short)(ix+start_x), (short)(iy+start_y));
+                LandObject cell = World.Inst().GetLandCell(
+                        (short)(ix+kvadrat_x*Const.kvadrat_size),
+                        (short)(iy+kvadrat_y*Const.kvadrat_size)
+                );
                 buf.put(cell.GetHeight());
                 buf.put(cell.GetType().GetByteVal());
 
@@ -98,9 +137,11 @@ public class GClient_out extends Thread {
         );
     }
 
+
+
     public void SendAutorizationResault(byte value)
     {
-        Send(ByteBuffer.allocate(1)
+        Send(ByteBuffer.allocate(2)
                 .put(Cmd.TcpClient.AutorizCli.ToByte())
                 .put(value)
         );
@@ -111,9 +152,11 @@ public class GClient_out extends Thread {
 
         ByteBuffer bbuf = ByteBuffer.allocate(buf.array().length + 2);
 
-        bbuf.putShort(0, (short) buf.array().length);
-        bbuf.put(buf);
+        bbuf.putShort((short) buf.array().length);
+        bbuf.put(buf.array());
 
+        World.Inst().TextMessage("out cmd leng="+buf.array().length);
+        //ByteBuffer.
         try
         {
             out_s.write(bbuf.array());
