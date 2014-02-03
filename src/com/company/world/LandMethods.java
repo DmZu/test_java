@@ -3,9 +3,13 @@ package com.company.world;
 import com.company.global.Const;
 import com.company.global.Enums;
 import com.company.world.objects.AnimalObject;
+import com.company.world.objects.BaseObject;
+import com.company.world.objects.CharacterObject;
 import com.company.world.objects.LandObject;
 import com.sun.javafx.geom.Vec3d;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -105,6 +109,23 @@ public class LandMethods {
                     0));
 
         }
+    }
+
+    public static List<CharacterObject> GetConnectedPlayers(short x_centr_cell, short y_centr_cell, short dist_radius)
+    {
+        List<CharacterObject> list = new ArrayList<CharacterObject>();
+
+        for(int ix = x_centr_cell - dist_radius; ix < x_centr_cell + dist_radius; ix++)
+            for(int iy = y_centr_cell - dist_radius; iy < y_centr_cell + dist_radius; iy++)
+            {
+            List<BaseObject> lbase = World.Inst().GetLandCell((short)ix, (short)iy).GetConteiner();
+
+            for(BaseObject ob : lbase)
+                if((ob instanceof CharacterObject) && ((CharacterObject)ob).IsConnect())
+                    list.add((CharacterObject)ob);
+            }
+
+        return list;
     }
 
 

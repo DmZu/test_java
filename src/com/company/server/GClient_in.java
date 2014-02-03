@@ -88,7 +88,19 @@ public class GClient_in extends Thread {
                     break;
 
                 case RegistrCli:
+                    if (is_version_ok) {
+                        String str = new String(cmd.GetData().array(), Charset.forName("UTF-32"));
 
+                        CharacterObject ob = World.Inst().GetChar(str.split("\n")[0]);
+
+                        if(ob == null)
+                        {
+                            new CharacterObject((byte)0, new Vec3d(0,0,0), str.split("\n")[0], str.split("\n")[1]);
+                            client_out.SendRegistrationResault((byte)1);
+                        }
+                        else
+                            client_out.SendRegistrationResault((byte)0);
+                    }
 
                     break;
 

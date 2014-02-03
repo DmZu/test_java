@@ -74,7 +74,7 @@ public abstract class BaseObject {
         return is_destroy;
     }
 
-    protected void  SetCell()
+    protected void SetCell()
     {
         if (this instanceof  StaticObject)
         {

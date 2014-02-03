@@ -1,6 +1,7 @@
 package com.company.world.objects;
 
 import com.company.global.AI_in_Interface;
+import com.company.server.GClient_out;
 import com.company.world.World;
 import com.sun.javafx.geom.Vec3d;
 
@@ -23,6 +24,8 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
 
     private double time_to_message = 0.3d;
 
+    private GClient_out tcp_client;
+
     public CharacterObject(byte type, Vec3d pos, String name, String pass)
     {
         super(pos);
@@ -41,6 +44,24 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
             //World.Inst().TextMessage("POS="+GetPos());
             time_to_message = 0.3d;
         }
+    }
+
+    public boolean IsConnect()
+    {
+        if(tcp_client == null)
+            return false;
+        else
+            return true;
+    }
+
+    public GClient_out GetTcpClient()
+    {
+        return tcp_client;
+    }
+
+    public void SetConnect(GClient_out client)
+    {
+        tcp_client = client;
     }
 
     public String GetName()

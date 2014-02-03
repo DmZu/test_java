@@ -44,10 +44,12 @@ public class GClient_out extends Thread {
             e.printStackTrace();
         }
         */
+        SendLandDATA();
+
         while(player_socket.isConnected())
         {
 
-            SendLandDATA();
+
             try {
                 Thread.currentThread().sleep(1000000);
             } catch (InterruptedException e) {
@@ -64,6 +66,7 @@ public class GClient_out extends Thread {
     public void SetChar(CharacterObject char_ob)
     {
         character = char_ob;
+        character.SetConnect(this);
         start();
     }
 
@@ -129,6 +132,17 @@ public class GClient_out extends Thread {
         Send(buf);
     }
 
+    public void SendCell(LandObject cell)
+    {
+        Send(ByteBuffer.allocate(7)
+                .put(Cmd.TcpClient.LandInfo.ToByte())
+                .putShort(cell.GetCellX())
+                .putShort(cell.GetCellY())
+                .put(cell.GetHeight())
+                .put(cell.GetType().GetByteVal())
+        );
+    }
+
     public void SendVersion()
     {
         Send(ByteBuffer.allocate(9)
@@ -143,6 +157,14 @@ public class GClient_out extends Thread {
     {
         Send(ByteBuffer.allocate(2)
                 .put(Cmd.TcpClient.AutorizCli.ToByte())
+                .put(value)
+        );
+    }
+
+    public void SendRegistrationResault(byte value)
+    {
+        Send(ByteBuffer.allocate(2)
+                .put(Cmd.TcpClient.RegistrCli.ToByte())
                 .put(value)
         );
     }

@@ -2,8 +2,11 @@ package com.company.world.objects;
 
 import com.company.global.Const;
 import com.company.global.Enums;
+import com.company.world.LandMethods;
 import com.company.world.World;
 import com.sun.javafx.geom.Vec3d;
+
+import java.util.List;
 
 /**
  * Created by Людмила on 06.01.14.
@@ -102,6 +105,15 @@ public class LandObject extends BaseObject {
             AddMaterial(Enums.GMaterials.Woter, 1000);
         }
 
+        ChangeCell();
+    }
+
+    private void ChangeCell()
+    {
+        List<CharacterObject> list = LandMethods.GetConnectedPlayers(GetCellX(), GetCellY(), (short) (Const.kvadrat_size * 2));
+
+        for(CharacterObject ob : list)
+            ob.GetTcpClient().SendCell(this);
     }
 
     public Vec3d GetPos()

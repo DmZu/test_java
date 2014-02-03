@@ -68,6 +68,7 @@ public class Cmd {
 
         LandInfo ((byte)60, (short)9),
         LandData ((byte)63, (short)1025),
+        LandCell ((byte)64, (short)7),
 
         CharMove ((byte)27, (short)9),
         CharLookTo ((byte)28, (short)9),
