@@ -71,7 +71,7 @@ public class Cmd {
         LandCell ((byte)64, (short)7),
 
         CharMove ((byte)27, (short)9),
-        CharLookTo ((byte)28, (short)9),
+        CharLookTo ((byte)28, (short)33),
 
         unknown((byte)0, (short)0);
 

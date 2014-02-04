@@ -117,6 +117,7 @@ public class GClient_in extends Thread {
         while(player_socket.isConnected())
         {
             cmd = ReadNextCmd();
+            World.Inst().TextMessage("CMD="+cmd.GetCmd().ToByte());
 
             switch (cmd.GetCmd())
             {

@@ -25,8 +25,9 @@ public class LandObject extends BaseObject {
     {
         super(ix,iy);
         height = height_;
+        type = type_;
 
-        SetType(type_);
+        //SetType(type_);
     }
 
     @Override

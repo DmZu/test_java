@@ -51,7 +51,7 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
             all_work += (int)(bio_time * (GetMass() + GetMatCountByType(Enums.GMaterials.Meat)));
 
 
-
+            if(!(this instanceof CharacterObject))
             if (RemoveMaterial(Enums.GMaterials.Fat, all_work / 1000) != 0)
             {
                 int i = GetMatCountByType(Enums.GMaterials.Bone) / 10;

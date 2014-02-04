@@ -48,15 +48,15 @@ public class GClient_out extends Thread {
 
         while(player_socket.isConnected())
         {
-
+            SendCurPosLookVel();
+            SendLandDATA();
 
             try {
-                Thread.currentThread().sleep(1000000);
+                Thread.currentThread().sleep(300);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            //SendCurPosLookVel();
 
             //
         }
@@ -125,8 +125,13 @@ public class GClient_out extends Thread {
                         (short)(ix+kvadrat_x*Const.kvadrat_size),
                         (short)(iy+kvadrat_y*Const.kvadrat_size)
                 );
-                buf.put(cell.GetHeight());
-                buf.put(cell.GetType().GetByteVal());
+                if(cell!=null)
+                {
+                    buf.put(cell.GetHeight());
+                    buf.put(cell.GetType().GetByteVal());
+                }
+                else
+                {buf.put((byte)0);buf.put((byte)0);}
 
             }
         Send(buf);

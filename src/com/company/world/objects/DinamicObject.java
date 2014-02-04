@@ -38,10 +38,19 @@ public abstract class DinamicObject extends StaticObject {
 
     protected void AddForceFront(Double value)
     {
-        Vec3d d = GetLookVector();
+        Vec3d d = new Vec3d(GetLookVec());
+        //Vec3d d = GetLookVector();
+
+        if(this instanceof CharacterObject)
+        {
+            World.Inst().TextMessage("VEL="+d);
+            value*=10;
+        }
 
         d.mul(value / (GetMass()/10.0));
 
+        if(this instanceof CharacterObject)
+            World.Inst().TextMessage("VEL="+d + "  F="+value);
         vel.set(d);
     }
 
