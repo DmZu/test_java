@@ -49,6 +49,7 @@ public class GClient_out extends Thread {
         while(player_socket.isConnected())
         {
             SendCurPosLookVel();
+
             SendLandDATA();
 
             try {
@@ -72,6 +73,7 @@ public class GClient_out extends Thread {
 
     public void SendCurPosLookVel()
     {
+        World.Inst().TextMessage("pos=" + character.GetPos());
         Send(ByteBuffer.allocate(73)
                 .put(Cmd.TcpClient.PosXYZ_AXYZ_VXYZ.ToByte())
                 .putDouble(character.GetPos().x)
@@ -101,11 +103,16 @@ public class GClient_out extends Thread {
         int x = (character.GetCellX()/Const.kvadrat_size);
         int y = (character.GetCellY()/Const.kvadrat_size);
 
+        if(x>0&&x<=World.Inst().GetLSize()/Const.kvadrat_size&&
+                y>0&&y<=World.Inst().GetLSize()/Const.kvadrat_size)
+        {
+        World.Inst().GetLSize();
+
         for(short ix=-1; ix < 2; ix++)
             for(short iy=-1; iy < 2; iy++)
                 if(Math.abs(x + ix - cur_kvad_x)>=2 || Math.abs(y + iy - cur_kvad_y)>=2)
                     SendLandDATA(x+ix, y+iy);
-
+        }
         cur_kvad_x = x;
         cur_kvad_y = y;
     }

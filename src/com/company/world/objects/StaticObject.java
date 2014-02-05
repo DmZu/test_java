@@ -32,6 +32,10 @@ public abstract class StaticObject extends BaseObject {
     {
         pos.add(value);
 
+        if(pos.x<0) pos.x=0;
+        if(pos.y<0) pos.y=0;
+        if(pos.x>=(World.Inst().GetLSize()-1)*Const.meters_in_cell_xy) pos.x=(World.Inst().GetLSize()-1)*Const.meters_in_cell_xy;
+        if(pos.y>=(World.Inst().GetLSize()-1)*Const.meters_in_cell_xy) pos.y=(World.Inst().GetLSize()-1)*Const.meters_in_cell_xy;
         SetCell();
 
         double h = World.Inst().GetLandPointHeight(GetPos().x, GetPos().y);

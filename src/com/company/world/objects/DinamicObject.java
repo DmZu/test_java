@@ -12,6 +12,7 @@ public abstract class DinamicObject extends StaticObject {
 
     private int work_dist = 0;
 
+    private double front_force = 0;
 
     public DinamicObject(Vec3d _vel, Vec3d pos, Vec3d ang)
     {
@@ -23,9 +24,23 @@ public abstract class DinamicObject extends StaticObject {
     protected void DinamicCalc(double time_sec)
     {
         double h = World.Inst().GetLandPointHeight(GetPos().x, GetPos().y);
+
+        Vec3d d = new Vec3d(GetLookVec());
+        //Vec3d d = GetLookVector();
+
+
+
+        d.mul(front_force / (GetMass()/10.0));
+
+        if(this instanceof CharacterObject)
+        {
+            //World.Inst().TextMessage("VEL="+d + "  F="+front_force);
+        }
+        vel=new Vec3d(d.x,d.y,vel.z);
+
         if(GetPos().z > h)
         {
-            vel.z -= time_sec;
+            vel.z -= time_sec*10;
         }
         else
             vel.z = 0;
@@ -38,20 +53,29 @@ public abstract class DinamicObject extends StaticObject {
 
     protected void AddForceFront(Double value)
     {
+        front_force = value;
+        if(this instanceof CharacterObject)
+        {
+            //World.Inst().TextMessage("VEL="+d);
+            front_force*=10;
+        }
+/*
         Vec3d d = new Vec3d(GetLookVec());
         //Vec3d d = GetLookVector();
 
         if(this instanceof CharacterObject)
         {
-            World.Inst().TextMessage("VEL="+d);
-            value*=10;
+            //World.Inst().TextMessage("VEL="+d);
+            front_force*=10;
         }
 
-        d.mul(value / (GetMass()/10.0));
+        d.mul(front_force / (GetMass()/10.0));
 
         if(this instanceof CharacterObject)
-            World.Inst().TextMessage("VEL="+d + "  F="+value);
-        vel.set(d);
+        {
+            //World.Inst().TextMessage("VEL="+d + "  F="+front_force);
+        }
+        vel.set(d);*/
     }
 
 

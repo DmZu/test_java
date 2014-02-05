@@ -112,6 +112,14 @@ public class World extends Thread implements IAdmin {
         }
     }
 
+    public int GetLSize()
+    {
+        if(Land_Matrix!= null)
+            return Land_Matrix.length;
+        else
+            return 0;
+    }
+
     public void GetTickTime()
     {
         AnimalObject ob = (AnimalObject)Animal_objects.Get(5100);
