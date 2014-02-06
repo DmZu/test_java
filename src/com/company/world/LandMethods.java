@@ -41,6 +41,63 @@ public class LandMethods {
                 heights_map[ix][iy] = (byte)vis;
             }
 
+
+        //Random r = new Random();
+///Create holm
+        int size_h = 100;
+        hei_ = 20;
+        byte[][] holm = new byte[size_h][size_h];
+        for (short ix = 0; ix < size_h; ix++)
+            for (short iy = 0; iy < size_h; iy++)
+            {
+
+                double vis = ((ix - (size_h / 2)) * (ix - (size_h / 2))) +
+                        ((iy - (size_h / 2)) * (iy - (size_h / 2)));
+
+                vis = ((size_h / 2) - Math.sqrt(vis));
+                if (vis >= hei_) vis = hei_;
+                if (vis <= 0) vis = 0;
+
+                vis = Math.pow((vis / hei_), 2 - ((vis / hei_) * 1.9)) * hei_;
+
+
+                holm[ix][iy] = (byte)vis;
+
+                //Log.WriteConsole(ix+" "+iy+";");
+            }
+        Random rand = new Random();
+        ///Add_Holms
+        //World.Inst().TextMessage("h " + World.Inst().GetLSize());
+        for (int i = 0; i < (heights_map.length * heights_map.length) / 1000; i++)
+        {
+            int pos_x = rand.nextInt(heights_map.length - size_h - size_h - 10)+size_h;
+            int pos_y = rand.nextInt(heights_map.length - size_h - size_h - 10)+size_h;
+
+            boolean is_plus = true;
+
+            if ((new Random()).nextInt(2) == 1)
+                is_plus = false;
+            else
+                is_plus = true;
+
+            for (short ix = 0; ix < size_h; ix++)
+                for (short iy = 0; iy < size_h; iy++)
+                {
+
+                    double vis = heights_map[ix + pos_x][ iy + pos_y];
+                    if (is_plus)
+                        vis += holm[ix][ iy];
+                    else
+                    vis -= holm[ix][ iy];
+
+                    if (vis > 126) vis = 126;
+                    if (vis < 0) vis = 0;
+
+                    //World.Inst().TextMessage("h " + vis);
+
+                    heights_map[ix + pos_x][ iy + pos_y] = (byte)vis;
+                }
+        }
         return heights_map;
     }
 

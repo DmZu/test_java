@@ -33,7 +33,7 @@ public class Console_UI extends Thread implements IAdmin
 
         World.Inst().AddUI(this);
 
-        World.Inst().Create("1", (short)500);
+        World.Inst().Create("1", (short)1000);
 
         World.Inst().Start("1");
     }

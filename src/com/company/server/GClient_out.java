@@ -103,8 +103,8 @@ public class GClient_out extends Thread {
         int x = (character.GetCellX()/Const.kvadrat_size);
         int y = (character.GetCellY()/Const.kvadrat_size);
 
-        if(x>0&&x<=World.Inst().GetLSize()/Const.kvadrat_size&&
-                y>0&&y<=World.Inst().GetLSize()/Const.kvadrat_size)
+        if(x>=0&&x<=World.Inst().GetLSize()/Const.kvadrat_size&&
+                y>=0&&y<=World.Inst().GetLSize()/Const.kvadrat_size)
         {
         World.Inst().GetLSize();
 
