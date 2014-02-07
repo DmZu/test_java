@@ -103,34 +103,36 @@
       <file leaf-file-name="GClient_in.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/server/GClient_in.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="125" column="26" selection-start="3763" selection-end="3763" vertical-scroll-proportion="0.0" vertical-offset="2125" max-vertical-offset="3349">
-              <folding />
+            <state line="125" column="26" selection-start="3763" selection-end="3763" vertical-scroll-proportion="0.0" vertical-offset="1258" max-vertical-offset="3128">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GClient_out.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="GClient_out.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/server/GClient_out.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="19" selection-start="2792" selection-end="2792" vertical-scroll-proportion="0.0" vertical-offset="1802" max-vertical-offset="3553">
+            <state line="91" column="10" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.55654764" vertical-offset="1020" max-vertical-offset="3570">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LandMethods.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LandMethods.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/world/LandMethods.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="0" selection-start="2457" selection-end="2457" vertical-scroll-proportion="-0.25297618" vertical-offset="1377" max-vertical-offset="3162">
+            <state line="81" column="0" selection-start="2457" selection-end="2457" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="3162">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Console_UI.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/console/Console_UI.java">
+      <file leaf-file-name="Const.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/global/Const.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="1836">
+            <state line="19" column="40" selection-start="429" selection-end="441" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
               <folding />
             </state>
           </provider>
@@ -139,8 +141,11 @@
       <file leaf-file-name="World.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/world/World.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="117" column="12" selection-start="2928" selection-end="2928" vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="3179">
-              <folding />
+            <state line="87" column="0" selection-start="2435" selection-end="2435" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2958">
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#646#654#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -148,7 +153,7 @@
       <file leaf-file-name="Cmd.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/global/Cmd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="0" selection-start="830" selection-end="830" vertical-scroll-proportion="0.0" vertical-offset="884" max-vertical-offset="1955">
+            <state line="69" column="25" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="1972">
               <folding />
             </state>
           </provider>
@@ -187,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/com/company/world/objects/CharacterObject.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/objects/BaseObject.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/objects/LandObject.java" />
-        <option value="$PROJECT_DIR$/src/com/company/global/Cmd.java" />
         <option value="$PROJECT_DIR$/src/com/company/server/GClient_in.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/objects/LifeObject.java" />
         <option value="$PROJECT_DIR$/src/com/company/global/C_IDenteficators.java" />
@@ -195,9 +199,10 @@
         <option value="$PROJECT_DIR$/src/com/company/world/World.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/objects/StaticObject.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/objects/DinamicObject.java" />
-        <option value="$PROJECT_DIR$/src/com/company/server/GClient_out.java" />
         <option value="$PROJECT_DIR$/src/com/company/console/Console_UI.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/LandMethods.java" />
+        <option value="$PROJECT_DIR$/src/com/company/global/Cmd.java" />
+        <option value="$PROJECT_DIR$/src/com/company/server/GClient_out.java" />
       </list>
     </option>
   </component>
@@ -415,6 +420,28 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="global">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test_java">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="com/company">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT USER_OBJECT="console">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
@@ -601,8 +628,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -614,17 +641,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26421052" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842106" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178125" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.27473685" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32842106" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -668,7 +695,9 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/company/global/Const.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="510" />
+        <state line="24" column="0" selection-start="503" selection-end="503" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="510">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test_java.iml">
@@ -803,22 +832,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/global/AI_in_Interface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="17" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408" />
+        <state line="9" column="17" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/global/AI_out_Interface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493" />
+        <state line="8" column="17" selection-start="169" selection-end="169" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/global/IAdmin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255" />
+        <state line="5" column="17" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/global/MaterialMass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="13" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612" />
+        <state line="5" column="13" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/src.zip!/java/nio/Buffer.java">
@@ -833,12 +870,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/global/TcpCmd.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="37" selection-start="362" selection-end="362" vertical-scroll-proportion="0.55654764" vertical-offset="0" max-vertical-offset="672" />
+        <state line="22" column="37" selection-start="362" selection-end="362" vertical-scroll-proportion="0.55654764" vertical-offset="0" max-vertical-offset="672">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/server/WorldServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="56" selection-start="491" selection-end="491" vertical-scroll-proportion="0.5818452" vertical-offset="0" max-vertical-offset="884" />
+        <state line="26" column="56" selection-start="491" selection-end="491" vertical-scroll-proportion="0.5818452" vertical-offset="0" max-vertical-offset="884">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/global/Enums.java">
@@ -850,7 +891,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/global/LifeAttributes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="13" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918" />
+        <state line="10" column="13" selection-start="184" selection-end="184" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/Main.java">
@@ -874,13 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/global/Cmd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="830" selection-end="830" vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1955">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/com/sun/javafx/geom/Vec3d.class">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="16" selection-start="596" selection-end="596" vertical-scroll-proportion="0.33333334" vertical-offset="116" max-vertical-offset="935" />
@@ -896,25 +932,6 @@
     <entry file="file://$PROJECT_DIR$/src/com/company/world/objects/CharacterObject.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="13" selection-start="929" selection-end="929" vertical-scroll-proportion="0.0" vertical-offset="399" max-vertical-offset="1734">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/global/Const.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="1" selection-start="502" selection-end="502" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/server/GClient_in.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="26" selection-start="3763" selection-end="3763" vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="3128">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/world/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="12" selection-start="2928" selection-end="2928" vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="2958">
           <folding />
         </state>
       </provider>
@@ -940,13 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/server/GClient_out.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="19" selection-start="2792" selection-end="2792" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="3400">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/console/Console_UI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1734">
@@ -956,7 +966,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/world/LandMethods.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="0" selection-start="2457" selection-end="2457" vertical-scroll-proportion="-0.25297618" vertical-offset="1377" max-vertical-offset="3162">
+        <state line="81" column="0" selection-start="2457" selection-end="2457" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="3162">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/global/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="40" selection-start="429" selection-end="441" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/global/Cmd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="25" selection-start="1266" selection-end="1266" vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="1972">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/server/GClient_in.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="125" column="26" selection-start="3763" selection-end="3763" vertical-scroll-proportion="0.0" vertical-offset="1258" max-vertical-offset="3128">
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/world/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="87" column="0" selection-start="2435" selection-end="2435" vertical-scroll-proportion="0.0" vertical-offset="1122" max-vertical-offset="2958">
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#646#654#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/server/GClient_out.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="91" column="10" selection-start="2258" selection-end="2258" vertical-scroll-proportion="0.55654764" vertical-offset="1020" max-vertical-offset="3570">
           <folding />
         </state>
       </provider>

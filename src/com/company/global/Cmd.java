@@ -67,6 +67,7 @@ public class Cmd {
         PosXYZ_AXYZ_VXYZ ((byte)24, (short)73),
 
         LandInfo ((byte)60, (short)9),
+        TimeNow ((byte)61, (short)9),
         LandData ((byte)63, (short)1025),
         LandCell ((byte)64, (short)7),
 

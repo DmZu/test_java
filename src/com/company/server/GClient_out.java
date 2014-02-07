@@ -44,12 +44,12 @@ public class GClient_out extends Thread {
             e.printStackTrace();
         }
         */
-        SendLandDATA();
+        //SendLandDATA();
 
         while(player_socket.isConnected())
         {
             SendCurPosLookVel();
-
+            SendTime();
             SendLandDATA();
 
             try {
@@ -71,9 +71,8 @@ public class GClient_out extends Thread {
         start();
     }
 
-    public void SendCurPosLookVel()
+    private void SendCurPosLookVel()
     {
-        World.Inst().TextMessage("pos=" + character.GetPos());
         Send(ByteBuffer.allocate(73)
                 .put(Cmd.TcpClient.PosXYZ_AXYZ_VXYZ.ToByte())
                 .putDouble(character.GetPos().x)
@@ -88,7 +87,18 @@ public class GClient_out extends Thread {
         );
     }
 
-    public void SendLandInfo()
+    private void SendTime()
+    {
+        //World.Inst().TextMessage("time=" + World.Inst().GetDayTimeNow());
+
+        ByteBuffer buf = ByteBuffer.allocate(2);
+        buf.put(Cmd.TcpClient.TimeNow.ToByte());
+        buf.put(World.Inst().GetDayTimeNow());
+        Send(buf);
+
+    }
+
+    private void SendLandInfo()
     {
         ByteBuffer buf = ByteBuffer.allocate(4);
         buf.put(Cmd.TcpClient.LandInfo.ToByte());
