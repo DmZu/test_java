@@ -41,11 +41,18 @@ public class LandMethods {
                 heights_map[ix][iy] = (byte)vis;
             }
 
-
-        //Random r = new Random();
 ///Create holm
-        int size_h = 100;
-        hei_ = 20;
+        heights_map = AddToHeiMap(heights_map, CreateObriv(100, 5), (heights_map.length * heights_map.length) / 10000);
+
+        heights_map = AddToHeiMap(heights_map, CreateHolm(100, 20), (heights_map.length * heights_map.length) / 3000);
+
+        heights_map = AddToHeiMap(heights_map, CreateHolm(300, 60), (heights_map.length * heights_map.length) / 500);
+
+        return heights_map;
+    }
+
+    private static byte[][] CreateHolm(int size_h, int hei_)
+    {
         byte[][] holm = new byte[size_h][size_h];
         for (short ix = 0; ix < size_h; ix++)
             for (short iy = 0; iy < size_h; iy++)
@@ -65,10 +72,49 @@ public class LandMethods {
 
                 //Log.WriteConsole(ix+" "+iy+";");
             }
+        return holm;
+    }
+    private static byte[][] CreateObriv(int size_h, int hei_)
+    {
+        int x_cof = 0;
+        int y_cof = 0;
         Random rand = new Random();
+        if(rand.nextInt(1)==1)
+            x_cof = size_h;
+        if(rand.nextInt(1)==1)
+            y_cof = size_h;
+
+        byte[][] holm = new byte[size_h][size_h];
+        for (short ix = 0; ix < size_h; ix++)
+            for (short iy = 0; iy < size_h; iy++)
+            {
+
+                double vis = ((ix -x_cof) * (ix -x_cof)) +
+                        ((iy-y_cof) * (iy-y_cof ));
+
+                vis = (Math.sqrt(vis));
+
+                if(vis>size_h) vis = 0;
+
+                if (vis >= hei_) vis = hei_;
+                if (vis <= 0) vis = 0;
+
+                vis = Math.pow((vis / hei_), 2 - ((vis / hei_) * 1.9)) * hei_;
+
+
+                holm[ix][iy] = (byte)vis;
+
+                //Log.WriteConsole(ix+" "+iy+";");
+            }
+        return holm;
+    }
+    private static byte[][] AddToHeiMap(byte[][] heights_map, byte[][] holm, int count)
+    {
+        Random rand = new Random();
+        int size_h = holm.length;
         ///Add_Holms
         //World.Inst().TextMessage("h " + World.Inst().GetLSize());
-        for (int i = 0; i < (heights_map.length * heights_map.length) / 1000; i++)
+        for (int i = 0; i < count; i++)
         {
             int pos_x = rand.nextInt(heights_map.length - size_h - size_h - 10)+size_h;
             int pos_y = rand.nextInt(heights_map.length - size_h - size_h - 10)+size_h;
@@ -88,7 +134,7 @@ public class LandMethods {
                     if (is_plus)
                         vis += holm[ix][ iy];
                     else
-                    vis -= holm[ix][ iy];
+                        vis -= holm[ix][ iy];
 
                     if (vis > 126) vis = 126;
                     if (vis < 0) vis = 0;
@@ -102,17 +148,85 @@ public class LandMethods {
     }
 
 
-
     private static Enums.CellTps[][] GenerateTpsMap(byte[][] heights_map)
     {
         Enums.CellTps[][] tps_map = new Enums.CellTps[heights_map.length][heights_map.length];
-
+        Random rand = new Random();
         for (int ix = 0; ix < tps_map.length; ix++)
             for (int iy = 0; iy < tps_map[ix].length; iy++)
             {
                 tps_map[ix][iy] = Enums.CellTps.Dirt;
                 if(heights_map[ix][iy] > Const.see_level)
+                {
                     tps_map[ix][iy] = Enums.CellTps.Grass;
+
+
+                    byte delta = 0;
+
+                    if (Math.abs(heights_map[ix][iy] - heights_map[ix + 1][ iy - 1]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][iy] - heights_map[ix + 1][iy - 1]);
+
+                    if (Math.abs(heights_map[ix][ iy] - heights_map[ix - 1][ iy - 1]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix - 1][ iy - 1]);
+
+                    if (Math.abs(heights_map[ix][ iy] - heights_map[ix + 1][ iy + 1]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix + 1][ iy + 1]);
+
+                    if (Math.abs(heights_map[ix][ iy] - heights_map[ix - 1][ iy + 1]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix - 1][ iy + 1]);
+
+
+
+                    if (Math.abs(heights_map[ix][ iy] - heights_map[ix + 1][ iy]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix + 1][ iy]);
+
+                    if (Math.abs(heights_map[ix][ iy] - heights_map[ix - 1][ iy]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix - 1][ iy]);
+
+                    if (Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy + 1]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy + 1]);
+
+                    if (Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy - 1]) > delta)
+                    delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy - 1]);
+
+                    if (delta < 6 && heights_map[ix][ iy] > Const.see_level + 2)
+                    {
+                        switch (rand.nextInt(19)+1)
+                        {
+                            case 1:
+                                tps_map[ix][ iy] = Enums.CellTps.Tree;
+                                break;
+                            case 2:
+                                tps_map[ix][ iy] = Enums.CellTps.TreeEll;
+                                break;
+                            case 3:
+                                tps_map[ix][ iy] = Enums.CellTps.TreeSosna;
+                                break;
+
+                        }
+                    }
+
+                    if (delta > 0)
+                    {
+
+
+
+                        if (delta >= 6)
+                        {
+                            if (rand.nextInt(3) == 1)
+                                tps_map[ix][ iy] = Enums.CellTps.Stone;
+                            if (rand.nextInt(3) == 1)
+                                tps_map[ix][ iy] = Enums.CellTps.Coal;
+                            if (rand.nextInt(3) == 1)
+                                tps_map[ix][ iy] = Enums.CellTps.Iron;
+
+                        }
+                    }
+                    else
+                    {
+
+                    }
+                 }
             }
 
         return tps_map;
@@ -175,11 +289,15 @@ public class LandMethods {
         for(int ix = x_centr_cell - dist_radius; ix < x_centr_cell + dist_radius; ix++)
             for(int iy = y_centr_cell - dist_radius; iy < y_centr_cell + dist_radius; iy++)
             {
-            List<BaseObject> lbase = World.Inst().GetLandCell((short)ix, (short)iy).GetConteiner();
+            LandObject cell1 =  World.Inst().GetLandCell((short)ix, (short)iy);
+                if(cell1 != null)
+                {
+                    List<BaseObject> lbase = cell1.GetConteiner();
 
-            for(BaseObject ob : lbase)
-                if((ob instanceof CharacterObject) && ((CharacterObject)ob).IsConnect())
-                    list.add((CharacterObject)ob);
+                    for(BaseObject ob : lbase)
+                        if((ob instanceof CharacterObject) && ((CharacterObject)ob).IsConnect())
+                            list.add((CharacterObject)ob);
+                }
             }
 
         return list;

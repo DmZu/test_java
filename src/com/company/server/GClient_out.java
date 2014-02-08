@@ -157,7 +157,7 @@ public class GClient_out extends Thread {
     public void SendCell(LandObject cell)
     {
         Send(ByteBuffer.allocate(7)
-                .put(Cmd.TcpClient.LandInfo.ToByte())
+                .put(Cmd.TcpClient.LandCell.ToByte())
                 .putShort(cell.GetCellX())
                 .putShort(cell.GetCellY())
                 .put(cell.GetHeight())
