@@ -1,4 +1,4 @@
-package com.dmzu.server;
+package com.dmzu.server.classes;
 
 /**
 * Created by d.zhukov on 08.02.14.

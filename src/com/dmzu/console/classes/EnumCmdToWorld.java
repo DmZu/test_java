@@ -1,4 +1,4 @@
-package com.dmzu.console;
+package com.dmzu.console.classes;
 
 /**
 * Created by d.zhukov on 08.02.14.

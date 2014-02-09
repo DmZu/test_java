@@ -1,7 +1,7 @@
 package com.dmzu;
 
 
-import com.dmzu.console.Console_UI;
+import com.dmzu.console.classes.Console_UI;
 
 public class Main {
 

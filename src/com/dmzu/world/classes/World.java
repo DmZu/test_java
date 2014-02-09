@@ -1,9 +1,9 @@
 package com.dmzu.world.classes;
 
 
-import com.dmzu.server.WorldServer;
+import com.dmzu.server.classes.WorldServer;
 import com.dmzu.world.IAdminToWorld;
-import com.dmzu.world.IToAdmin;
+import com.dmzu.console.IConsole;
 import com.dmzu.world.classes.objects.AnimalObject;
 import com.dmzu.world.classes.objects.BaseObject;
 import com.dmzu.world.classes.objects.CharacterObject;
@@ -19,7 +19,7 @@ import java.lang.Thread;
  */
 public class World extends Thread implements IAdminToWorld {
 
-    private List<IToAdmin> out_ui = new ArrayList<IToAdmin>();
+    private List<IConsole> out_ui = new ArrayList<IConsole>();
 
     private ObjectsThread Land_objects, Animal_objects, Char_objects;
     private LandObject[][] Land_Matrix;
@@ -57,7 +57,7 @@ public class World extends Thread implements IAdminToWorld {
 
     ///Admins interface methods
 
-    public void AddUI(IToAdmin ui)
+    public void AddUI(IConsole ui)
     {
         out_ui.add(ui);
     }
@@ -193,7 +193,7 @@ public class World extends Thread implements IAdminToWorld {
     }
     public void TextMessage(String message)
     {
-        for(IToAdmin ob : out_ui)
+        for(IConsole ob : out_ui)
             ob.TextMessage(message);
     }
 }

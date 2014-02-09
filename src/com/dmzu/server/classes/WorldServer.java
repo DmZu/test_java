@@ -1,4 +1,4 @@
-package com.dmzu.server;
+package com.dmzu.server.classes;
 
 import com.dmzu.world.classes.Const;
 

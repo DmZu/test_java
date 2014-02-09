@@ -1,10 +1,11 @@
-package com.dmzu.server;
+package com.dmzu.server.classes;
 
 import com.dmzu.world.classes.Const;
 import com.dmzu.world.IClientToWorld;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
 
+import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -207,7 +208,14 @@ public class GClient_out extends Thread {
         }
 
         catch(Exception e)
-        {System.out.println("Send error: "+e);}
+        {
+            System.out.println("Send error: "+e);
+            try {
+                player_socket.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
     }
 
 }

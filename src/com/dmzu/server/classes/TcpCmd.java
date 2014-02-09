@@ -1,4 +1,4 @@
-package com.dmzu.server;
+package com.dmzu.server.classes;
 
 import java.nio.ByteBuffer;
 

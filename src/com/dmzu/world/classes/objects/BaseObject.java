@@ -116,13 +116,18 @@ public abstract class BaseObject {
 
     public void AddToContainer(BaseObject obj)
     {
-        container.add(obj);
-
+        synchronized (container)
+        {
+            container.add(obj);
+        }
     }
 
     public void RemoveFromContainer(BaseObject obj)
     {
-        container.remove(obj);
+        synchronized (container)
+        {
+            container.remove(obj);
+        }
     }
 
     public List<BaseObject> GetConteiner()

@@ -1,4 +1,4 @@
-package com.dmzu.server;
+package com.dmzu.server.classes;
 
 import com.dmzu.world.classes.Const;
 import com.dmzu.world.IClientToWorld;
@@ -47,7 +47,7 @@ public class GClient_in extends Thread {
         boolean is_version_ok = false;
         TcpCmd cmd;
 
-        while (!is_login_ok) {
+        while (!is_login_ok && player_socket.isConnected()) {
 
             cmd = ReadNextCmd();
 

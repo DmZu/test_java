@@ -1,11 +1,13 @@
 package com.dmzu.world;
 
+import com.dmzu.console.IConsole;
+
 /**
  * Created by Людмила on 06.01.14.
  */
 public interface IAdminToWorld extends IClientToWorld
 {
-    void AddUI(IToAdmin ui);
+    void AddUI(IConsole ui);
 
     void Create(String name, short size);
 

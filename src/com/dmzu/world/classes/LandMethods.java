@@ -293,9 +293,12 @@ public class LandMethods {
                 {
                     List<BaseObject> lbase = cell1.GetConteiner();
 
+                    synchronized (lbase)
+                    {
                     for(BaseObject ob : lbase)
                         if((ob instanceof CharacterObject) && ((CharacterObject)ob).IsConnect())
                             list.add((CharacterObject)ob);
+                    }
                 }
             }
 
