@@ -139,8 +139,8 @@ public class World extends Thread implements IAdminToWorld {
 
         if(ob!=null)
         {
-            str = "Anim="+ob.GetTickTimeSec();
-            //ob.DebugOut();
+            //str = "Anim="+ob.GetTickTimeSec();
+            ob.DebugOut();
         }
 
         return str;
