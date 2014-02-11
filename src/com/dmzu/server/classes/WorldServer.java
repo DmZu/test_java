@@ -1,5 +1,6 @@
 package com.dmzu.server.classes;
 
+import com.dmzu.server.IServer;
 import com.dmzu.world.classes.Const;
 
 import java.net.ServerSocket;
@@ -7,7 +8,7 @@ import java.net.ServerSocket;
 /**
  * Created by dm on 25.01.14.
  */
-public class WorldServer extends Thread {
+public class WorldServer extends Thread implements IServer{
 
 
     public WorldServer()

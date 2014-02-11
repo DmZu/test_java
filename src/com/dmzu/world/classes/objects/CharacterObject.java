@@ -1,7 +1,7 @@
 package com.dmzu.world.classes.objects;
 
 import com.dmzu.server.classes.GClient_out;
-import com.sun.javafx.geom.Vec3d;
+import com.dmzu.type.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;

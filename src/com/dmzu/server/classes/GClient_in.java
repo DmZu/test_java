@@ -4,7 +4,7 @@ import com.dmzu.world.classes.Const;
 import com.dmzu.world.IClientToWorld;
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.CharacterObject;
-import com.sun.javafx.geom.Vec3d;
+import com.dmzu.type.Vec3d;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -49,7 +49,8 @@ public class Console_UI extends Thread implements IConsole
     }
     private String ReadStringLn()
     {
-        System.out.println("->");
+        WriteLn("");
+        Write("->");
         return in.nextLine();
     }
 

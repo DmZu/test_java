@@ -5,7 +5,7 @@ import com.dmzu.world.classes.objects.AnimalObject;
 import com.dmzu.world.classes.objects.BaseObject;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
-import com.sun.javafx.geom.Vec3d;
+import com.dmzu.type.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;

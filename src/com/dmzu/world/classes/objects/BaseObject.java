@@ -2,7 +2,7 @@ package com.dmzu.world.classes.objects;
 
 import com.dmzu.world.classes.Const;
 import com.dmzu.world.classes.World;
-import com.sun.javafx.geom.Vec3d;
+import com.dmzu.type.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -64,91 +64,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="IConsole.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/console/IConsole.java">
+      <file leaf-file-name="Vec3d.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/dmzu/type/Vec3d.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IAdminToWorld.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/IAdminToWorld.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LandMethods.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/LandMethods.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="297" column="0" selection-start="10189" selection-end="10189" vertical-scroll-proportion="0.0" vertical-offset="4494" max-vertical-offset="5219">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseObject.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/BaseObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="120" column="12" selection-start="2566" selection-end="2566" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="3689">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GClient_in.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_in.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="58" selection-start="1276" selection-end="1276" vertical-scroll-proportion="-15.111111" vertical-offset="255" max-vertical-offset="3145">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AI_out_Interface.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_out_Interface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AI_in_Interface.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_in_Interface.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IServer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/IServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="17" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IClientToWorld.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/IClientToWorld.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.18251534" vertical-offset="0" max-vertical-offset="652">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GClient_out.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_out.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="216" column="13" selection-start="5845" selection-end="5845" vertical-scroll-proportion="0.0" vertical-offset="3049" max-vertical-offset="3723">
+            <state line="18" column="78" selection-start="464" selection-end="464" vertical-scroll-proportion="0.43504533" vertical-offset="18" max-vertical-offset="986">
               <folding />
             </state>
           </provider>
@@ -164,16 +83,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/com/company/global/MaterialMass.java" />
-        <option value="$PROJECT_DIR$/src/com/company/global/AI_in_Interface.java" />
-        <option value="$PROJECT_DIR$/src/com/company/global/AI_out_Interface.java" />
-        <option value="$PROJECT_DIR$/src/com/company/world/objects/AnimalObject.java" />
-        <option value="$PROJECT_DIR$/src/com/company/global/IAdmin.java" />
-        <option value="$PROJECT_DIR$/src/com/company/server/Server.java" />
-        <option value="$PROJECT_DIR$/src/com/company/server/GClien.java" />
-        <option value="$PROJECT_DIR$/src/com/company/server/GClien_in.java" />
-        <option value="$PROJECT_DIR$/src/com/company/global/Enums.java" />
-        <option value="$PROJECT_DIR$/src/com/company/global/TcpCmd.java" />
         <option value="$PROJECT_DIR$/src/com/company/server/WorldServer.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/objects/CharacterObject.java" />
         <option value="$PROJECT_DIR$/src/com/company/world/objects/BaseObject.java" />
@@ -210,19 +119,29 @@
         <option value="$PROJECT_DIR$/src/com/dmzu/world/IToAdmin.java" />
         <option value="$PROJECT_DIR$/src/com/dmzu/world/IConsole.java" />
         <option value="$PROJECT_DIR$/src/com/dmzu/console/IConsole.java" />
-        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/LandMethods.java" />
-        <option value="$PROJECT_DIR$/src/com/dmzu/console/classes/Console_UI.java" />
         <option value="$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_out.java" />
-        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/BaseObject.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/server/classes/WorldServer.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/console/classes/Console_UI.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/LifeObject.java" />
         <option value="$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_in.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/type/Vec3d.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/LandMethods.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/World.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_out_Interface.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AnimalObject.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/BaseObject.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/CharacterObject.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/DinamicObject.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/LandObject.java" />
+        <option value="$PROJECT_DIR$/src/com/dmzu/world/classes/objects/StaticObject.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="298" />
+    <option name="y" value="197" />
+    <option name="width" value="1350" />
+    <option name="height" value="794" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -269,7 +188,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -322,6 +240,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -432,111 +351,7 @@
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="world">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="classes">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="objects">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test_java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/dmzu">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test_java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/dmzu">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="server">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="classes">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test_java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/dmzu">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="console">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="test_java">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="com/dmzu">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="console">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="classes">
+            <PATH_ELEMENT USER_OBJECT="type">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
             </PATH_ELEMENT>
@@ -555,6 +370,16 @@
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveMembersDialog.RECENTS_KEY">
@@ -730,8 +555,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <frame x="298" y="197" width="1350" height="794" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -739,21 +564,21 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32997763" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26210526" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2616279" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2630814" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270349" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29427084" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29385307" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2747093" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3270349" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -795,6 +620,72 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/StaticObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="7" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="1071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/DinamicObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/LandObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="7" selection-start="165" selection-end="165" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_in.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="7" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="3315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/IAdminToWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="141" selection-end="141" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="391">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/LandMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="297" column="0" selection-start="10270" selection-end="10270" vertical-scroll-proportion="0.0" vertical-offset="5049" max-vertical-offset="5321">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/BaseObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="120" column="12" selection-start="2545" selection-end="2545" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="3689">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_out_Interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="493" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_in_Interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="408" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/IClientToWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_java.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306" />
@@ -895,11 +786,6 @@
         <state line="511" column="0" selection-start="12384" selection-end="12384" vertical-scroll-proportion="0.33333334" vertical-offset="8038" max-vertical-offset="9792" />
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/com/sun/javafx/geom/Vec3d.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="16" selection-start="596" selection-end="596" vertical-scroll-proportion="0.33333334" vertical-offset="116" max-vertical-offset="935" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/ObjectsThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="55" column="40" selection-start="1345" selection-end="1345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
@@ -907,86 +793,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/World.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="23" selection-start="931" selection-end="943" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="3298">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/console/classes/Console_UI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="29" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.0" vertical-offset="765" max-vertical-offset="1938">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/IServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="81" selection-end="81" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/console/IConsole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="17" selection-start="88" selection-end="88" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_out.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="13" selection-start="5845" selection-end="5845" vertical-scroll-proportion="0.0" vertical-offset="3049" max-vertical-offset="3723">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/LandMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="297" column="0" selection-start="10189" selection-end="10189" vertical-scroll-proportion="0.0" vertical-offset="4494" max-vertical-offset="5219">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/BaseObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="120" column="12" selection-start="2566" selection-end="2566" vertical-scroll-proportion="0.0" vertical-offset="1683" max-vertical-offset="3689">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_in.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="58" selection-start="1276" selection-end="1276" vertical-scroll-proportion="-15.111111" vertical-offset="255" max-vertical-offset="3145">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_out_Interface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_in_Interface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408">
-          <folding />
-        </state>
+        <state line="7" column="17" selection-start="125" selection-end="125" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="408" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/IAdminToWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="120" selection-end="120" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+        <state line="9" column="17" selection-start="176" selection-end="176" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="425">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/IClientToWorld.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.18251534" vertical-offset="0" max-vertical-offset="652">
+        <state line="8" column="17" selection-start="192" selection-end="192" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/console/classes/EnumCmdToWorld.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="12" selection-start="89" selection-end="89" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/console/classes/Console_UI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="61" selection-start="921" selection-end="921" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="1955" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/classes/WorldServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="58" selection-start="231" selection-end="231" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/LandMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="7" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5372">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AI_out_Interface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="7" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/BaseObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="7" selection-start="122" selection-end="122" vertical-scroll-proportion="0.15044248" vertical-offset="0" max-vertical-offset="3774">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/LifeObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="64" selection-start="444" selection-end="444" vertical-scroll-proportion="0.0" vertical-offset="41" max-vertical-offset="4131">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="641">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_45/jre/lib/jfxrt.jar!/com/sun/javafx/geom/Vec3d.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="17" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.49609983" vertical-offset="311" max-vertical-offset="952">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/CharacterObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1802">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/World.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="7" selection-start="363" selection-end="363" vertical-scroll-proportion="0.22496147" vertical-offset="24" max-vertical-offset="3485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/AnimalObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="7" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/StaticObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="7" selection-start="122" selection-end="122" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/DinamicObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="7" selection-start="85" selection-end="85" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1785">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/world/classes/objects/LandObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="7" selection-start="165" selection-end="165" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2227">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/server/classes/GClient_in.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="7" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3315">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dmzu/type/Vec3d.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="78" selection-start="464" selection-end="464" vertical-scroll-proportion="0.43504533" vertical-offset="18" max-vertical-offset="986">
           <folding />
         </state>
       </provider>
@@ -997,7 +931,7 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>test_java:jar</last-edited>
+          <last-edited>test_java:jar2</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1050,6 +984,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1069,6 +1004,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>test_java</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
