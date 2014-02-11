@@ -1,5 +1,6 @@
 package com.dmzu.world;
 
+import com.dmzu.world.classes.types.WorldPropertes;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
 
@@ -8,7 +9,7 @@ import com.dmzu.world.classes.objects.LandObject;
  */
 public interface IClientToWorld {
 
-    int GetLSize();
+    WorldPropertes GetPropertes();
 
     LandObject GetLandCell(short ix, short iy);
 

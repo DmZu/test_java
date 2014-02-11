@@ -1,11 +1,11 @@
 package com.dmzu.world.classes;
 
-import com.dmzu.world.classes.objects.Enums;
+import com.dmzu.world.classes.types.Enums;
 import com.dmzu.world.classes.objects.AnimalObject;
-import com.dmzu.world.classes.objects.BaseObject;
+import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class LandMethods {
 
         byte[][] heights_map = new byte[size][size];
 
-        int hei_ = Const.see_level + 5;
+        int hei_ = World.Inst().GetPropertes().get_See_level() + 5;
         ///plato
         for (int ix = 0; ix < size; ix++)
             for (int iy = 0; iy < size; iy++)
@@ -155,7 +155,7 @@ public class LandMethods {
             for (int iy = 0; iy < tps_map[ix].length; iy++)
             {
                 tps_map[ix][iy] = Enums.CellTps.Dirt;
-                if(heights_map[ix][iy] > Const.see_level)
+                if(heights_map[ix][iy] > World.Inst().GetPropertes().get_See_level())
                 {
                     tps_map[ix][iy] = Enums.CellTps.Grass;
 
@@ -188,7 +188,7 @@ public class LandMethods {
                     if (Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy - 1]) > delta)
                     delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy - 1]);
 
-                    if (delta < 6 && heights_map[ix][ iy] > Const.see_level + 2)
+                    if (delta < 6 && heights_map[ix][ iy] > World.Inst().GetPropertes().get_See_level() + 2)
                     {
                         switch (rand.nextInt(19)+1)
                         {
@@ -263,8 +263,8 @@ public class LandMethods {
                 e.printStackTrace();
             }
 
-            double x =     ((rnd.nextDouble() * (((double)size)/2d))+size/4) * Const.meters_in_cell_xy;
-            double y =     ((rnd.nextDouble() * (((double)size)/2d))+size/4) * Const.meters_in_cell_xy;
+            double x =     ((rnd.nextDouble() * (((double)size)/2d))+size/4) * World.Inst().GetPropertes().get_Meters_in_cell_xy();
+            double y =     ((rnd.nextDouble() * (((double)size)/2d))+size/4) * World.Inst().GetPropertes().get_Meters_in_cell_xy();
 
            // if(i<10)
             //    World.Inst().TextMessage("X=" + x + "   Y=" + y);

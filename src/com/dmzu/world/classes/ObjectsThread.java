@@ -1,6 +1,6 @@
 package com.dmzu.world.classes;
 
-import com.dmzu.world.classes.objects.BaseObject;
+import com.dmzu.world.classes.objects.abstr.BaseObject;
 
 import java.util.ArrayList;
 import java.util.List;

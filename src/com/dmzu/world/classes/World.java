@@ -5,10 +5,11 @@ import com.dmzu.server.classes.WorldServer;
 import com.dmzu.world.IAdminToWorld;
 import com.dmzu.console.IConsole;
 import com.dmzu.world.classes.objects.AnimalObject;
-import com.dmzu.world.classes.objects.BaseObject;
+import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.types.Vec3d;
+import com.dmzu.world.classes.types.WorldPropertes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +23,13 @@ public class World extends Thread implements IAdminToWorld {
     private List<IConsole> out_ui = new ArrayList<IConsole>();
 
     private ObjectsThread Land_objects, Animal_objects, Char_objects;
+
     private LandObject[][] Land_Matrix;
+
     private byte day_time_now;
+
+    private WorldPropertes props;
+
 
     private static World inst = new World();
 
@@ -64,6 +70,7 @@ public class World extends Thread implements IAdminToWorld {
 
     public void Create(String name, short size)
     {
+        props = new WorldPropertes(size);
 
         Land_Matrix = LandMethods.GenerateLandMatrix(size);
         LandMethods.GenerateAnimals(size, size * 5);
@@ -72,8 +79,8 @@ public class World extends Thread implements IAdminToWorld {
         new CharacterObject(
                 (byte)0,
                 new Vec3d(
-                        size * Const.meters_in_cell_xy / 2,
-                        size * Const.meters_in_cell_xy / 2,
+                        size * props.get_Meters_in_cell_xy() / 2,
+                        size * props.get_Meters_in_cell_xy() / 2,
                         256d),
                 "def",
                 "111");
@@ -145,12 +152,9 @@ public class World extends Thread implements IAdminToWorld {
 
     ///Client Interface methods
 
-    public int GetLSize()
+    public WorldPropertes GetPropertes()
     {
-        if(Land_Matrix!= null)
-            return Land_Matrix.length;
-        else
-            return 0;
+            return props;
     }
 
     public LandObject GetLandCell(short ix, short iy)
@@ -165,7 +169,7 @@ public class World extends Thread implements IAdminToWorld {
     {
         //TODO: poluchat visotu s terraina. uchitivaia visotu sosednih kletok.
 
-        double h = (double)GetLandCell((short)(point.x / Const.meters_in_cell_xy),(short)(point.y / Const.meters_in_cell_xy)).GetHeight();
+        double h = (double)GetLandCell((short)(point.x / World.Inst().GetPropertes().get_Meters_in_cell_xy()),(short)(point.y / World.Inst().GetPropertes().get_Meters_in_cell_xy())).GetHeight();
 
 
         return h;

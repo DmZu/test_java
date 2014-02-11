@@ -1,5 +1,7 @@
 package com.dmzu.world.classes.objects;
 
+import com.dmzu.world.classes.objects.abstr.BaseObject;
+
 import java.util.List;
 
 /**

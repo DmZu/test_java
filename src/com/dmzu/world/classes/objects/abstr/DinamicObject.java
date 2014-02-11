@@ -1,7 +1,8 @@
-package com.dmzu.world.classes.objects;
+package com.dmzu.world.classes.objects.abstr;
 
 import com.dmzu.world.classes.World;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.objects.CharacterObject;
+import com.dmzu.world.classes.types.Vec3d;
 
 /**
  * Created by Людмила on 07.01.14.

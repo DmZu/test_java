@@ -1,7 +1,9 @@
 package com.dmzu.world.classes.objects;
 
 import com.dmzu.server.classes.GClient_out;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.objects.abstr.BaseObject;
+import com.dmzu.world.classes.objects.abstr.LifeObject;
+import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;

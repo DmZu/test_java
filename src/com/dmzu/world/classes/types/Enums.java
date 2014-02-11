@@ -1,4 +1,4 @@
-package com.dmzu.world.classes.objects;
+package com.dmzu.world.classes.types;
 
 /**
  * Created by Людмила on 06.01.14.

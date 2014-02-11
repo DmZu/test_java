@@ -1,6 +1,6 @@
 package com.dmzu.server.classes;
 
-import com.dmzu.world.classes.Const;
+import com.dmzu.Application;
 import com.dmzu.world.IClientToWorld;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
@@ -104,20 +104,20 @@ public class GClient_out extends Thread {
         ByteBuffer buf = ByteBuffer.allocate(4);
         buf.put(EnumTcpCmd.LandInfo.ToByte());
         buf.put(world.GetDayTimeNow());
-        buf.put((byte)Const.kvadrat_size);
-        buf.put((byte)Const.meters_in_cell_xy);
+        buf.put((byte)world.GetPropertes().get_Kvadrat_size());
+        buf.put((byte)world.GetPropertes().get_Meters_in_cell_xy());
         Send(buf);
     }
 
     private void SendLandDATA()
     {
-        int x = (character.GetCellX()/Const.kvadrat_size);
-        int y = (character.GetCellY()/Const.kvadrat_size);
+        int x = (character.GetCellX()/world.GetPropertes().get_Kvadrat_size());
+        int y = (character.GetCellY()/world.GetPropertes().get_Kvadrat_size());
 
-        if(x>=0&&x<=world.GetLSize()/Const.kvadrat_size&&
-                y>=0&&y<=world.GetLSize()/Const.kvadrat_size)
+        if(x>=0&&x<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size()&&
+                y>=0&&y<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size())
         {
-        world.GetLSize();
+        //world.GetLSize();
 
         for(short ix=-1; ix < 2; ix++)
             for(short iy=-1; iy < 2; iy++)
@@ -130,18 +130,18 @@ public class GClient_out extends Thread {
 
     private void SendLandDATA(int kvadrat_x, int kvadrat_y)
     {
-        ByteBuffer buf = ByteBuffer.allocate(3 + (Const.kvadrat_size+1)*(Const.kvadrat_size+1) * 2);
+        ByteBuffer buf = ByteBuffer.allocate(3 + (world.GetPropertes().get_Kvadrat_size()+1)*(world.GetPropertes().get_Kvadrat_size()+1) * 2);
         buf.put(EnumTcpCmd.LandData.ToByte());
 
         buf.put((byte) kvadrat_x);
         buf.put((byte) kvadrat_y);
 
-        for(short ix=0; ix < Const.kvadrat_size+1; ix++)
-            for(short iy=0; iy < Const.kvadrat_size+1; iy++)
+        for(short ix=0; ix < world.GetPropertes().get_Kvadrat_size()+1; ix++)
+            for(short iy=0; iy < world.GetPropertes().get_Kvadrat_size()+1; iy++)
             {
                 LandObject cell = world.GetLandCell(
-                        (short) (ix + kvadrat_x * Const.kvadrat_size),
-                        (short) (iy + kvadrat_y * Const.kvadrat_size)
+                        (short) (ix + kvadrat_x * world.GetPropertes().get_Kvadrat_size()),
+                        (short) (iy + kvadrat_y * world.GetPropertes().get_Kvadrat_size())
                 );
                 if(cell!=null)
                 {
@@ -170,7 +170,7 @@ public class GClient_out extends Thread {
     {
         Send(ByteBuffer.allocate(9)
                 .put(EnumTcpCmd.Version.ToByte())
-                .putDouble(Const.app_version)
+                .putDouble(Application.version)
         );
     }
 

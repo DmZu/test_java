@@ -1,9 +1,10 @@
 package com.dmzu.world.classes.objects;
 
-import com.dmzu.world.classes.Const;
 import com.dmzu.world.classes.LandMethods;
 import com.dmzu.world.classes.World;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.objects.abstr.BaseObject;
+import com.dmzu.world.classes.types.Enums;
+import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class LandObject extends BaseObject {
         //Console.WriteLine(time_sec);
         timer += time_sec;
 
-        if (height > Const.see_level + 2)
+        if (height > World.Inst().GetPropertes().get_See_level() + 2)
         {
 
             if (type == Enums.CellTps.Dirt && timer > time_for_grass_grow)
@@ -110,7 +111,7 @@ public class LandObject extends BaseObject {
 
     private void ChangeCell()
     {
-        List<CharacterObject> list = LandMethods.GetConnectedPlayers(GetCellX(), GetCellY(), (short) (Const.kvadrat_size * 2));
+        List<CharacterObject> list = LandMethods.GetConnectedPlayers(GetCellX(), GetCellY(), (short) (World.Inst().GetPropertes().get_Kvadrat_size() * 2));
 
         for(CharacterObject ob : list)
             ob.GetTcpClient().SendCell(this);
@@ -118,7 +119,9 @@ public class LandObject extends BaseObject {
 
     public Vec3d GetPos()
     {
-        Vec3d pos = new Vec3d(GetCellX() * Const.meters_in_cell_xy, GetCellY() * Const.meters_in_cell_xy, this.GetHeight() * Const.meters_in_cell_z);
+        Vec3d pos = new Vec3d(GetCellX() * World.Inst().GetPropertes().get_Meters_in_cell_xy(),
+                GetCellY() * World.Inst().GetPropertes().get_Meters_in_cell_xy(),
+                this.GetHeight() * World.Inst().GetPropertes().get_Meters_in_cell_z());
 
         return pos;
     }

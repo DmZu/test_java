@@ -1,7 +1,6 @@
 package com.dmzu.server.classes;
 
 import com.dmzu.server.IServer;
-import com.dmzu.world.classes.Const;
 
 import java.net.ServerSocket;
 
@@ -10,6 +9,8 @@ import java.net.ServerSocket;
  */
 public class WorldServer extends Thread implements IServer{
 
+
+    int TCPServerPort = 10011;
 
     public WorldServer()
     {
@@ -23,8 +24,7 @@ public class WorldServer extends Thread implements IServer{
             int i = 0; // счётчик подключений
 
 
-            ServerSocket server = new ServerSocket(Const.TCPServerPort/*, 0,
-                    InetAddress.getByName("localhost")*/);
+            ServerSocket server = new ServerSocket(TCPServerPort);
 
             System.out.println("server is started");
 

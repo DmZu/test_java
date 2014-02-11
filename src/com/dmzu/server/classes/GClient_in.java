@@ -1,10 +1,10 @@
 package com.dmzu.server.classes;
 
-import com.dmzu.world.classes.Const;
+import com.dmzu.Application;
 import com.dmzu.world.IClientToWorld;
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.CharacterObject;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.types.Vec3d;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -56,7 +56,7 @@ public class GClient_in extends Thread {
             switch (cmd.GetCmd()) {
                 case Version:
 
-                    if (Const.app_version == cmd.GetData().getDouble(0)) {
+                    if (Application.version == cmd.GetData().getDouble(0)) {
                         world.TextMessage("version OK");
                         is_version_ok = true;
                     }

@@ -1,7 +1,13 @@
-package com.dmzu.world.classes.objects;
+package com.dmzu.world.classes.objects.abstr;
 
 import com.dmzu.world.classes.World;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.objects.AI_in_Interface;
+import com.dmzu.world.classes.objects.AI_out_Interface;
+import com.dmzu.world.classes.objects.CharacterObject;
+import com.dmzu.world.classes.objects.LandObject;
+import com.dmzu.world.classes.types.Enums;
+import com.dmzu.world.classes.types.LifePropertes;
+import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;

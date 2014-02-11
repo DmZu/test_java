@@ -1,4 +1,4 @@
-package com.dmzu.type;
+package com.dmzu.world.classes.types;
 
 /**
  * Created by d.zhukov on 09.02.14.
@@ -29,9 +29,9 @@ public class Vec3d {
 
     public void normalize() { x=x/length(); y=y/length(); z=z/length(); }
 
-    //public void cross(com.dmzu.type.Vec3d vec3d, com.dmzu.type.Vec3d vec3d1) { /* compiled code */ }
+    //public void cross(com.dmzu.world.classes.types.Vec3d vec3d, com.dmzu.world.classes.types.Vec3d vec3d1) { /* compiled code */ }
 
-    //public double dot(com.dmzu.type.Vec3d vec3d) { /* compiled code */ }
+    //public double dot(com.dmzu.world.classes.types.Vec3d vec3d) { /* compiled code */ }
 
     //public int hashCode() { /* compiled code */ }
 

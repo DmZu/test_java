@@ -1,8 +1,9 @@
-package com.dmzu.world.classes.objects;
+package com.dmzu.world.classes.objects.abstr;
 
-import com.dmzu.world.classes.Const;
 import com.dmzu.world.classes.World;
-import com.dmzu.type.Vec3d;
+import com.dmzu.world.classes.types.Enums;
+import com.dmzu.world.classes.types.MaterialMass;
+import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +78,7 @@ public abstract class BaseObject {
         if (this instanceof  StaticObject)
         {
             Vec3d pos =  ((DinamicObject)this).GetPos();
-            SetCell((short) (pos.x / Const.meters_in_cell_xy), (short) (pos.y / Const.meters_in_cell_xy));
+            SetCell((short) (pos.x / World.Inst().GetPropertes().get_Meters_in_cell_xy()), (short) (pos.y / World.Inst().GetPropertes().get_Meters_in_cell_xy()));
         }
     }
 

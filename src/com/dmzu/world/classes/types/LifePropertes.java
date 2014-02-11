@@ -1,4 +1,6 @@
-package com.dmzu.world.classes.objects;
+package com.dmzu.world.classes.types;
+
+import com.dmzu.world.classes.objects.abstr.LifeObject;
 
 import java.util.ArrayList;
 import java.util.List;
