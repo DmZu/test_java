@@ -1,5 +1,6 @@
 package com.dmzu.console.classes;
 
+import com.dmzu.Application;
 import com.dmzu.console.IConsole;
 import com.dmzu.world.IAdminToWorld;
 import com.dmzu.world.classes.World;
@@ -27,6 +28,7 @@ public class Console_UI extends Thread implements IConsole
         //String str = new String(ByteBuffer.allocate(80).array(), Charset.forName("UTF-16"));
         //String str = "111\n222\n333";
         //WriteLn("str = " + str.split("\n")[2]);
+        WriteLn("App Version: " + Application.version);
 
         WriteLn("UI starting...");
 

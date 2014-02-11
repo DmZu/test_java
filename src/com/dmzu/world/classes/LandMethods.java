@@ -41,11 +41,11 @@ public class LandMethods {
             }
 
 ///Create holm
-        heights_map = AddToHeiMap(heights_map, CreateObriv(100, 5), (heights_map.length * heights_map.length) / 10000);
+        //heights_map = AddToHeiMap(heights_map, CreateObriv(100, 5), (heights_map.length * heights_map.length) / 10000);
 
-        heights_map = AddToHeiMap(heights_map, CreateHolm(100, 20), (heights_map.length * heights_map.length) / 3000);
+        //heights_map = AddToHeiMap(heights_map, CreateHolm(100, 20), (heights_map.length * heights_map.length) / 3000);
 
-        heights_map = AddToHeiMap(heights_map, CreateHolm(300, 60), (heights_map.length * heights_map.length) / 500);
+        //heights_map = AddToHeiMap(heights_map, CreateHolm(300, 60), (heights_map.length * heights_map.length) / 500);
 
         return heights_map;
     }

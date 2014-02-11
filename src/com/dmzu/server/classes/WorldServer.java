@@ -10,7 +10,7 @@ import java.net.ServerSocket;
 public class WorldServer extends Thread implements IServer{
 
 
-    int TCPServerPort = 10011;
+    private int TCPServerPort = 10011;
 
     public WorldServer()
     {
