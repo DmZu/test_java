@@ -18,7 +18,7 @@ import java.lang.Thread;
 /**
  * Created by Людмила on 06.01.14.
  */
-public class World extends Thread implements IAdminToWorld {
+public class World extends Thread {
 
     private List<IConsole> out_ui = new ArrayList<IConsole>();
 

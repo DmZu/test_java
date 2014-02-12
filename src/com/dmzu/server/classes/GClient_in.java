@@ -1,7 +1,7 @@
 package com.dmzu.server.classes;
 
 import com.dmzu.Application;
-import com.dmzu.world.IClientToWorld;
+import com.dmzu.world.AdapterClientToWorld;
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.types.Vec3d;
@@ -23,7 +23,7 @@ public class GClient_in extends Thread {
 
     private CharacterObject character;
 
-    private IClientToWorld world = World.Inst();
+    private AdapterClientToWorld world = World.Inst();
 
     public GClient_in(Socket p_socket) {
         player_socket = p_socket;

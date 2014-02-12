@@ -1,7 +1,7 @@
 package com.dmzu.server.classes;
 
 import com.dmzu.Application;
-import com.dmzu.world.IClientToWorld;
+import com.dmzu.world.AdapterClientToWorld;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
 
@@ -20,8 +20,8 @@ public class GClient_out extends Thread {
     private CharacterObject character;
 
     private int cur_kvad_x = -3200000, cur_kvad_y = -3200000;
-    private IClientToWorld world;
-    public GClient_out(Socket cli_socket, IClientToWorld world_)
+    private AdapterClientToWorld world;
+    public GClient_out(Socket cli_socket, AdapterClientToWorld world_)
     {
         world = world_;
 
