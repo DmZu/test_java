@@ -32,10 +32,13 @@ public class Console_UI extends Thread implements IConsole
 
         WriteLn("UI starting...");
 
+        short i = 256;
+
+        WriteLn("i="+(byte)i);
 
         world.AddUI(this);
 
-        world.Create("1", (short) 2000);
+        world.Create("1", (short) 1000);
 
         world.Start("1");
     }

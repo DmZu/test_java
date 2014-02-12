@@ -47,7 +47,7 @@ public class GClient_out extends Thread {
         */
         //SendLandDATA();
 
-        while(player_socket.isConnected())
+        while(player_socket != null)
         {
             SendCurPosLookVel();
             SendTime();
@@ -114,8 +114,8 @@ public class GClient_out extends Thread {
         int x = (character.GetCellX()/world.GetPropertes().get_Kvadrat_size());
         int y = (character.GetCellY()/world.GetPropertes().get_Kvadrat_size());
 
-        if(x>=0&&x<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size()&&
-                y>=0&&y<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size())
+        //if(x>=0&&x<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size()&&
+                //y>=0&&y<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size())
         {
         //world.GetLSize();
 
@@ -145,7 +145,7 @@ public class GClient_out extends Thread {
                 );
                 if(cell!=null)
                 {
-                    buf.put(cell.GetHeight());
+                    buf.put(cell.GetHeightInByte());
                     buf.put(cell.GetType().GetByteVal());
                 }
                 else
@@ -161,7 +161,7 @@ public class GClient_out extends Thread {
                 .put(EnumTcpCmd.LandCell.ToByte())
                 .putShort(cell.GetCellX())
                 .putShort(cell.GetCellY())
-                .put(cell.GetHeight())
+                .put(cell.GetHeightInByte())
                 .put(cell.GetType().GetByteVal())
         );
     }
@@ -211,11 +211,15 @@ public class GClient_out extends Thread {
         {
             System.out.println("Send error: "+e);
             try {
-                player_socket.close();
+                if(player_socket != null)
+                    player_socket.close();
+
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+            player_socket = null;
         }
+
     }
 
 }

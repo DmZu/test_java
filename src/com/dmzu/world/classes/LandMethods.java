@@ -17,11 +17,11 @@ import java.util.Random;
 public class LandMethods {
 
 
-    private static byte[][] GenerateHeightsMap(short size)
+    private static short[][] GenerateHeightsMap(short size)
     {
 
 
-        byte[][] heights_map = new byte[size][size];
+        short[][] heights_map = new short[size][size];
 
         int hei_ = World.Inst().GetPropertes().get_See_level() + 5;
         ///plato
@@ -43,16 +43,28 @@ public class LandMethods {
 ///Create holm
         //heights_map = AddToHeiMap(heights_map, CreateObriv(100, 5), (heights_map.length * heights_map.length) / 10000);
 
-        //heights_map = AddToHeiMap(heights_map, CreateHolm(100, 20), (heights_map.length * heights_map.length) / 3000);
+        heights_map = AddToHeiMap(heights_map, CreateHolm(50, 10), (heights_map.length * heights_map.length) / 3000);
 
-        //heights_map = AddToHeiMap(heights_map, CreateHolm(300, 60), (heights_map.length * heights_map.length) / 500);
+        heights_map = AddToHeiMap(heights_map, CreateHolm(300, 30), (heights_map.length * heights_map.length) / 1000);
+
+        heights_map = Smoth(heights_map);
+        return heights_map;
+    }
+
+    private static short[][] Smoth(short[][] heights_map)
+    {
+        for (short ix = 1; ix < heights_map.length-1; ix++)
+            for (short iy = 1; iy < heights_map.length-1; iy++)
+            {
+
+            }
 
         return heights_map;
     }
 
-    private static byte[][] CreateHolm(int size_h, int hei_)
+    private static short[][] CreateHolm(int size_h, int hei_)
     {
-        byte[][] holm = new byte[size_h][size_h];
+        short[][] holm = new short[size_h][size_h];
         for (short ix = 0; ix < size_h; ix++)
             for (short iy = 0; iy < size_h; iy++)
             {
@@ -73,7 +85,7 @@ public class LandMethods {
             }
         return holm;
     }
-    private static byte[][] CreateObriv(int size_h, int hei_)
+    private static short[][] CreateObriv(int size_h, int hei_)
     {
         int x_cof = 0;
         int y_cof = 0;
@@ -83,7 +95,7 @@ public class LandMethods {
         if(rand.nextInt(1)==1)
             y_cof = size_h;
 
-        byte[][] holm = new byte[size_h][size_h];
+        short[][] holm = new short[size_h][size_h];
         for (short ix = 0; ix < size_h; ix++)
             for (short iy = 0; iy < size_h; iy++)
             {
@@ -101,13 +113,13 @@ public class LandMethods {
                 vis = Math.pow((vis / hei_), 2 - ((vis / hei_) * 1.9)) * hei_;
 
 
-                holm[ix][iy] = (byte)vis;
+                holm[ix][iy] = (short)vis;
 
                 //Log.WriteConsole(ix+" "+iy+";");
             }
         return holm;
     }
-    private static byte[][] AddToHeiMap(byte[][] heights_map, byte[][] holm, int count)
+    private static short[][] AddToHeiMap(short[][] heights_map, short[][] holm, int count)
     {
         Random rand = new Random();
         int size_h = holm.length;
@@ -135,19 +147,19 @@ public class LandMethods {
                     else
                         vis -= holm[ix][ iy];
 
-                    if (vis > 126) vis = 126;
+                    if (vis > 255) vis = 255;
                     if (vis < 0) vis = 0;
 
                     //World.Inst().TextMessage("h " + vis);
 
-                    heights_map[ix + pos_x][ iy + pos_y] = (byte)vis;
+                    heights_map[ix + pos_x][ iy + pos_y] = (short)vis;
                 }
         }
         return heights_map;
     }
 
 
-    private static Enums.CellTps[][] GenerateTpsMap(byte[][] heights_map)
+    private static Enums.CellTps[][] GenerateTpsMap(short[][] heights_map)
     {
         Enums.CellTps[][] tps_map = new Enums.CellTps[heights_map.length][heights_map.length];
         Random rand = new Random();
@@ -188,7 +200,7 @@ public class LandMethods {
                     if (Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy - 1]) > delta)
                     delta = (byte)Math.abs(heights_map[ix][ iy] - heights_map[ix][ iy - 1]);
 
-                    if (delta < 6 && heights_map[ix][ iy] > World.Inst().GetPropertes().get_See_level() + 2)
+                    if (delta < 3 && heights_map[ix][ iy] > World.Inst().GetPropertes().get_See_level() + 2)
                     {
                         switch (rand.nextInt(19)+1)
                         {
@@ -235,7 +247,7 @@ public class LandMethods {
     {
         LandObject[][] Land_Matrix = new LandObject[size][size];
 
-        byte[][] heights_map = GenerateHeightsMap(size);
+        short[][] heights_map = GenerateHeightsMap(size);
 
         Enums.CellTps[][] tps_map = GenerateTpsMap(heights_map);
 

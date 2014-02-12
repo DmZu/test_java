@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class LandObject extends BaseObject {
 
-    private byte height = 0;
+    private short height = 0;
     private Enums.CellTps type;
 
     private double timer = 0;
@@ -21,10 +21,10 @@ public class LandObject extends BaseObject {
     private static double time_for_grass_grow = 10;
     private static double time_for_tree_grow = 20;
 
-    public LandObject(byte height_, Enums.CellTps type_, short ix, short iy)
+    public LandObject(short height_, Enums.CellTps type_, short ix, short iy)
     {
         super(ix,iy);
-        height = height_;
+        SetHeight(height_);
         type = type_;
 
         //SetType(type_);
@@ -49,8 +49,8 @@ public class LandObject extends BaseObject {
                     for (short iy = (short)(GetCellY() - 1); iy < (short)(GetCellY() + 2); iy++)
                     {
 
-                        if (Math.abs(GetHeight() - World.Inst().GetLandCell(ix,iy).GetHeight()) > delta_height)
-                            delta_height = Math.abs(GetHeight() - World.Inst().GetLandCell(ix,iy).GetHeight());
+                        if (Math.abs(GetHeightInByte() - World.Inst().GetLandCell(ix,iy).GetHeightInByte()) > delta_height)
+                            delta_height = Math.abs(GetHeightInByte() - World.Inst().GetLandCell(ix,iy).GetHeightInByte());
 
                     }
 
@@ -84,9 +84,24 @@ public class LandObject extends BaseObject {
 
     }
 
-    public byte GetHeight()
+    public byte GetHeightInByte()
+    {
+        return (byte)(height /*- Byte.MIN_VALUE*/);
+    }
+
+    public short GetHeight()
     {
         return height;
+    }
+
+    private void SetHeight(short h)
+    {
+
+        height = h;
+        if(height < 0)
+            height = 0;
+        if(height > 255)
+            height = 255;
     }
 
     public Enums.CellTps GetType()
@@ -121,7 +136,7 @@ public class LandObject extends BaseObject {
     {
         Vec3d pos = new Vec3d(GetCellX() * World.Inst().GetPropertes().get_Meters_in_cell_xy(),
                 GetCellY() * World.Inst().GetPropertes().get_Meters_in_cell_xy(),
-                this.GetHeight() * World.Inst().GetPropertes().get_Meters_in_cell_z());
+                this.GetHeightInByte() * World.Inst().GetPropertes().get_Meters_in_cell_z());
 
         return pos;
     }

@@ -1,5 +1,7 @@
 package com.dmzu.world.classes.types;
 
+import java.nio.ByteBuffer;
+
 /**
  * Created by d.zhukov on 09.02.14.
  */
@@ -7,6 +9,8 @@ public class Vec3d {
     public double x;
     public double y;
     public double z;
+
+    public static final int float_size = 12;
 
     public Vec3d() { x=0;y=0;z=0; }
 
@@ -46,6 +50,15 @@ public class Vec3d {
         }
         else
             return false;
+    }
+
+    public ByteBuffer GetFloatByteBuffer()
+    {
+        ByteBuffer buf = ByteBuffer.allocate(float_size);
+        buf.putFloat((float)x);
+        buf.putFloat((float)y);
+        buf.putFloat((float)z);
+        return buf;
     }
 
     public java.lang.String toString() { return "" + x + "; " + y + "; " + z + "; "; }

@@ -27,7 +27,6 @@ public class GClient_in extends Thread {
 
     public GClient_in(Socket p_socket) {
         player_socket = p_socket;
-
         // из сокета клиента берём поток входящих данных
         try {
             in_s = player_socket.getInputStream();
@@ -35,7 +34,13 @@ public class GClient_in extends Thread {
             System.out.println("Constructor error: " + e);
         } // вывод исключений
 
-
+        try {
+        //world.TextMessage("size="+player_socket.getReceiveBufferSize());
+            player_socket.setSendBufferSize(1000000);
+        }
+        catch (Exception e) {
+            System.out.println("set buffer size error: " + e);
+        } // вывод исключений
 
         client_out = new GClient_out(p_socket, world);
         world.TextMessage("client connected");
@@ -47,7 +52,7 @@ public class GClient_in extends Thread {
         boolean is_version_ok = false;
         TcpCmd cmd;
 
-        while (!is_login_ok && player_socket.isConnected()) {
+        while (!is_login_ok && player_socket != null) {
 
             cmd = ReadNextCmd();
 
@@ -112,7 +117,7 @@ public class GClient_in extends Thread {
         }
 
 
-        while(player_socket.isConnected())
+        while(player_socket != null)
         {
             cmd = ReadNextCmd();
             world.TextMessage("CMD=" + cmd.GetCmd().ToByte());
@@ -157,10 +162,12 @@ public class GClient_in extends Thread {
             } catch (Exception e) {
                 System.out.println("Read error: " + e);
                 try {
-                    player_socket.close();
+                    if(player_socket != null)
+                        player_socket.close();
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
+                player_socket = null;
             } // вывод исключений
 
 
