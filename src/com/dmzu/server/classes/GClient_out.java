@@ -20,10 +20,9 @@ public class GClient_out extends Thread {
     private CharacterObject character;
 
     private int cur_kvad_x = -3200000, cur_kvad_y = -3200000;
-    private AdapterToWorld world;
-    public GClient_out(Socket cli_socket, AdapterToWorld world_)
+
+    public GClient_out(Socket cli_socket)
     {
-        world = world_;
 
         player_socket = cli_socket;
         try
@@ -38,14 +37,6 @@ public class GClient_out extends Thread {
     public void run()
     {
         SendLandInfo();
-        /*
-        try {
-            Thread.currentThread().sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        */
-        //SendLandDATA();
 
         while(player_socket != null)
         {
@@ -59,8 +50,6 @@ public class GClient_out extends Thread {
                 e.printStackTrace();
             }
 
-
-            //
         }
 
     }
@@ -94,7 +83,7 @@ public class GClient_out extends Thread {
 
         ByteBuffer buf = ByteBuffer.allocate(2);
         buf.put(EnumTcpCmd.TimeNow.ToByte());
-        buf.put(world.GetDayTimeNow());
+        buf.put(AdapterToWorld.GetDayTimeNow());
         Send(buf);
 
     }
@@ -103,16 +92,16 @@ public class GClient_out extends Thread {
     {
         ByteBuffer buf = ByteBuffer.allocate(4);
         buf.put(EnumTcpCmd.LandInfo.ToByte());
-        buf.put(world.GetDayTimeNow());
-        buf.put((byte)world.GetPropertes().get_Kvadrat_size());
-        buf.put((byte)world.GetPropertes().get_Meters_in_cell_xy());
+        buf.put(AdapterToWorld.GetDayTimeNow());
+        buf.put((byte)AdapterToWorld.GetKvadratSize());
+        buf.put((byte)AdapterToWorld.GetMetersInCellXY());
         Send(buf);
     }
 
     private void SendLandDATA()
     {
-        int x = (character.GetCellX()/world.GetPropertes().get_Kvadrat_size());
-        int y = (character.GetCellY()/world.GetPropertes().get_Kvadrat_size());
+        int x = (character.GetCellX()/AdapterToWorld.GetKvadratSize());
+        int y = (character.GetCellY()/AdapterToWorld.GetKvadratSize());
 
         //if(x>=0&&x<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size()&&
                 //y>=0&&y<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size())
@@ -130,39 +119,31 @@ public class GClient_out extends Thread {
 
     private void SendLandDATA(int kvadrat_x, int kvadrat_y)
     {
-        ByteBuffer buf = ByteBuffer.allocate(3 + (world.GetPropertes().get_Kvadrat_size()+1)*(world.GetPropertes().get_Kvadrat_size()+1) * 2);
+        ByteBuffer buf = ByteBuffer.allocate(3 + (AdapterToWorld.GetKvadratSize()+1)*(AdapterToWorld.GetKvadratSize()+1) * 2);
         buf.put(EnumTcpCmd.LandData.ToByte());
 
         buf.put((byte) kvadrat_x);
         buf.put((byte) kvadrat_y);
 
-        for(short ix=0; ix < world.GetPropertes().get_Kvadrat_size()+1; ix++)
-            for(short iy=0; iy < world.GetPropertes().get_Kvadrat_size()+1; iy++)
+        for(short ix=0; ix < AdapterToWorld.GetKvadratSize()+1; ix++)
+            for(short iy=0; iy < AdapterToWorld.GetKvadratSize()+1; iy++)
             {
-                LandObject cell = world.GetLandCell(
-                        (short) (ix + kvadrat_x * world.GetPropertes().get_Kvadrat_size()),
-                        (short) (iy + kvadrat_y * world.GetPropertes().get_Kvadrat_size())
-                );
-                if(cell!=null)
-                {
-                    buf.put(cell.GetHeightInByte());
-                    buf.put(cell.GetType().GetByteVal());
-                }
-                else
-                {buf.put((byte)0);buf.put((byte)0);}
-
+                buf.put(AdapterToWorld.GetLandCellBytes(
+                        (short) (ix + kvadrat_x * AdapterToWorld.GetKvadratSize()),
+                        (short) (iy + kvadrat_y * AdapterToWorld.GetKvadratSize())
+                ));
             }
+
         Send(buf);
     }
 
-    public void SendCell(LandObject cell)
+    public void SendCell(short x, short y)
     {
         Send(ByteBuffer.allocate(7)
                 .put(EnumTcpCmd.LandCell.ToByte())
-                .putShort(cell.GetCellX())
-                .putShort(cell.GetCellY())
-                .put(cell.GetHeightInByte())
-                .put(cell.GetType().GetByteVal())
+                .putShort(x)
+                .putShort(y)
+                .put(AdapterToWorld.GetLandCellBytes(x, y))
         );
     }
 
@@ -176,19 +157,35 @@ public class GClient_out extends Thread {
 
 
 
-    public void SendAutorizationResault(byte value)
+    public void SendAutorizationOk()
     {
         Send(ByteBuffer.allocate(2)
                 .put(EnumTcpCmd.AutorizCli.ToByte())
-                .put(value)
+                .put((byte)1)
         );
     }
 
-    public void SendRegistrationResault(byte value)
+    public void SendAutorizationEr()
+    {
+        Send(ByteBuffer.allocate(2)
+                .put(EnumTcpCmd.AutorizCli.ToByte())
+                .put((byte)0)
+        );
+    }
+
+    public void SendRegistrationOk()
     {
         Send(ByteBuffer.allocate(2)
                 .put(EnumTcpCmd.RegistrCli.ToByte())
-                .put(value)
+                .put((byte)1)
+        );
+    }
+
+    public void SendRegistrationEr()
+    {
+        Send(ByteBuffer.allocate(2)
+                .put(EnumTcpCmd.RegistrCli.ToByte())
+                .put((byte)0)
         );
     }
 
@@ -200,7 +197,7 @@ public class GClient_out extends Thread {
         bbuf.putShort((short) buf.array().length);
         bbuf.put(buf.array());
 
-        world.TextMessage("out cmd leng=" + buf.array().length);
+        AdapterToWorld.TextMessage("out cmd leng=" + buf.array().length);
         //ByteBuffer.
         try
         {

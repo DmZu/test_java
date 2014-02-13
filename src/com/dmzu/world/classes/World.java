@@ -2,7 +2,6 @@ package com.dmzu.world.classes;
 
 
 import com.dmzu.server.classes.WorldServer;
-import com.dmzu.world.IAdminToWorld;
 import com.dmzu.console.IConsole;
 import com.dmzu.world.classes.objects.AnimalObject;
 import com.dmzu.world.classes.objects.abstr.BaseObject;
@@ -18,7 +17,7 @@ import java.lang.Thread;
 /**
  * Created by Людмила on 06.01.14.
  */
-public class World extends Thread {
+public class World extends Thread implements IAdminToWorld{
 
     private List<IConsole> out_ui = new ArrayList<IConsole>();
 
@@ -120,6 +119,7 @@ public class World extends Thread {
 
         this.start();
         new WorldServer();
+
 
     }
 
