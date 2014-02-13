@@ -8,7 +8,7 @@ import com.dmzu.world.classes.objects.LandObject;
 /**
  * Created by d.zhukov on 08.02.14.
  */
-public class AdapterClientToWorld {
+public class AdapterToWorld {
 
     public static byte GetDayTimeNow()
     {
@@ -40,10 +40,11 @@ public class AdapterClientToWorld {
         return World.Inst().GetPropertes().get_Meters_in_cell_xy();
     }
 
-    public static byte GetMetersInCellZ()
+    public static double GetMetersInCellZ()
     {
         return World.Inst().GetPropertes().get_Meters_in_cell_z();
     }
+
 
     WorldPropertes GetPropertes();
 

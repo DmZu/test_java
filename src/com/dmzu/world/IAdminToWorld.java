@@ -5,7 +5,7 @@ import com.dmzu.console.IConsole;
 /**
  * Created by Людмила on 06.01.14.
  */
-public interface IAdminToWorld extends AdapterClientToWorld
+public interface IAdminToWorld extends AdapterToWorld
 {
     void AddUI(IConsole ui);
 
