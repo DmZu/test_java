@@ -2,7 +2,7 @@ package com.dmzu.console.classes;
 
 import com.dmzu.Application;
 import com.dmzu.console.IConsole;
-import com.dmzu.world.IAdminToWorld;
+import com.dmzu.world.classes.IAdminToWorld;
 import com.dmzu.world.classes.World;
 
 import java.util.Scanner;

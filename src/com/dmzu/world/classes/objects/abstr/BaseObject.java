@@ -3,6 +3,7 @@ package com.dmzu.world.classes.objects.abstr;
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.types.Enums;
 import com.dmzu.world.classes.types.MaterialMass;
+import com.dmzu.world.classes.types.ObjectID;
 import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.ArrayList;
@@ -65,7 +66,9 @@ public abstract class BaseObject {
     }
     protected void Destroy()
     {
-        //AllObjects.Destroy(this);
+        if(this instanceof StaticObject)
+            ObjectID.RemoveID(((StaticObject) this).GetID());
+
         is_destroy = true;
     }
     public boolean IsDestroy()

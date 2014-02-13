@@ -2,7 +2,6 @@ package com.dmzu.server.classes;
 
 import com.dmzu.Application;
 import com.dmzu.world.AdapterToWorld;
-import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.types.Vec3d;
 
@@ -21,9 +20,8 @@ public class GClient_in extends Thread {
 
     private GClient_out client_out;
 
-    private CharacterObject character;
+    private int character_id;
 
-    private AdapterToWorld world = World.Inst();
 
     public GClient_in(Socket p_socket) {
         player_socket = p_socket;
@@ -42,8 +40,8 @@ public class GClient_in extends Thread {
             System.out.println("set buffer size error: " + e);
         } // вывод исключений
 
-        client_out = new GClient_out(p_socket, world);
-        world.TextMessage("client connected");
+        client_out = new GClient_out(p_socket);
+        AdapterToWorld.TextMessage("client connected");
         start();
     }
 
@@ -56,13 +54,13 @@ public class GClient_in extends Thread {
 
             cmd = ReadNextCmd();
 
-            world.TextMessage("CMD=" + cmd.GetCmd().ToByte());
+            AdapterToWorld.TextMessage("CMD=" + cmd.GetCmd().ToByte());
 
             switch (cmd.GetCmd()) {
                 case Version:
 
                     if (Application.version == cmd.GetData().getDouble(0)) {
-                        world.TextMessage("version OK");
+                        AdapterToWorld.TextMessage("version OK");
                         is_version_ok = true;
                     }
 
@@ -74,19 +72,18 @@ public class GClient_in extends Thread {
                     if (is_version_ok) {
                         String str = new String(cmd.GetData().array(), Charset.forName("UTF-32"));
 
-                        CharacterObject ob = world.GetChar(str.split("\n")[0]);
+                        int id = AdapterToWorld.GetCharID(str);
 
-                        if(ob != null)
-                            if (ob.IsPass(str.split("\n")[1]))
-                            {
-                                is_login_ok = true;
-                                client_out.SendAutorizationResault((byte)1);
-                                character = ob;
-                                client_out.SetChar(ob);
-                            }
+                        if (id >= 0)
+                        {
+                            is_login_ok = true;
+                            client_out.SendAutorizationOk();
+                            character_id = id;
+                            client_out.SetChar(id);
+                        }
 
                         if(!is_login_ok)
-                            client_out.SendAutorizationResault((byte)0);
+                            client_out.SendAutorizationEr();
                     }
                     break;
 
@@ -94,21 +91,21 @@ public class GClient_in extends Thread {
                     if (is_version_ok) {
                         String str = new String(cmd.GetData().array(), Charset.forName("UTF-32"));
 
-                        CharacterObject ob = world.GetChar(str.split("\n")[0]);
+                        CharacterObject ob = AdapterToWorld.GetChar(str.split("\n")[0]);
 
                         if(ob == null)
                         {
                             new CharacterObject((byte)0, new Vec3d(0,0,0), str.split("\n")[0], str.split("\n")[1]);
-                            client_out.SendRegistrationResault((byte)1);
+                            client_out.SendRegistrationOk();
                         }
                         else
-                            client_out.SendRegistrationResault((byte)0);
+                            client_out.SendRegistrationEr();
                     }
 
                     break;
 
                 default:
-                    world.TextMessage("CMD=" + cmd.GetCmd().ToByte());
+                    AdapterToWorld.TextMessage("CMD=" + cmd.GetCmd().ToByte());
                     is_version_ok = false;
 
             }
@@ -120,24 +117,20 @@ public class GClient_in extends Thread {
         while(player_socket != null)
         {
             cmd = ReadNextCmd();
-            world.TextMessage("CMD=" + cmd.GetCmd().ToByte());
+            AdapterToWorld.TextMessage("CMD=" + cmd.GetCmd().ToByte());
 
             switch (cmd.GetCmd())
             {
                 case CharMove:
-                    character.Move(cmd.GetData().getDouble());
+                    AdapterToWorld.SetCharMove(character_id, cmd.GetData().array());
                     break;
 
                 case CharLookTo:
-                    character.LookTo(new Vec3d(
-                            cmd.GetData().getDouble(0),
-                            cmd.GetData().getDouble(8),
-                            cmd.GetData().getDouble(16)
-                            ));
+                    AdapterToWorld.SetCharLookTo(character_id, cmd.GetData().array());
                     break;
 
                 default:
-                    world.TextMessage("CMD=" + cmd.GetCmd().ToByte());
+                    AdapterToWorld.TextMessage("CMD=" + cmd.GetCmd().ToByte());
 
             }
 
@@ -182,11 +175,6 @@ public class GClient_in extends Thread {
 
     private TcpCmd ReadNextCmd() {
 
-/*
-        ByteBuffer b = ByteBuffer.allocate(2);
-        ByteBuffer b1 = ByteBuffer.allocate(2);
-        b.putShort((short)9);
-        b1 = Read(2);*/
         short length = Read(2).getShort();
 
         return new TcpCmd(Read(1).get(0), Read(length-1));

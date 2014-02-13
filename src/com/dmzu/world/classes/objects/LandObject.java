@@ -129,7 +129,7 @@ public class LandObject extends BaseObject {
         List<CharacterObject> list = LandMethods.GetConnectedPlayers(GetCellX(), GetCellY(), (short) (World.Inst().GetPropertes().get_Kvadrat_size() * 2));
 
         for(CharacterObject ob : list)
-            ob.GetTcpClient().SendCell(this);
+            ob.GetTcpClient().SendCell(GetCellX(), GetCellY());
     }
 
     public Vec3d GetPos()
