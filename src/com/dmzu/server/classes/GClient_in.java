@@ -2,8 +2,6 @@ package com.dmzu.server.classes;
 
 import com.dmzu.Application;
 import com.dmzu.world.AdapterToWorld;
-import com.dmzu.world.classes.objects.CharacterObject;
-import com.dmzu.world.classes.types.Vec3d;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -91,13 +89,8 @@ public class GClient_in extends Thread {
                     if (is_version_ok) {
                         String str = new String(cmd.GetData().array(), Charset.forName("UTF-32"));
 
-                        CharacterObject ob = AdapterToWorld.GetChar(str.split("\n")[0]);
-
-                        if(ob == null)
-                        {
-                            new CharacterObject((byte)0, new Vec3d(0,0,0), str.split("\n")[0], str.split("\n")[1]);
+                        if(AdapterToWorld.RegistrNewChar(str))
                             client_out.SendRegistrationOk();
-                        }
                         else
                             client_out.SendRegistrationEr();
                     }

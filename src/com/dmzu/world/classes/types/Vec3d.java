@@ -11,6 +11,7 @@ public class Vec3d {
     public double z;
 
     public static final int float_size = 12;
+    public static final int double_size = 24;
 
     public Vec3d() { x=0;y=0;z=0; }
 
@@ -52,13 +53,22 @@ public class Vec3d {
             return false;
     }
 
-    public ByteBuffer GetFloatByteBuffer()
+    public byte[] GetFloatByteBuffer()
     {
         ByteBuffer buf = ByteBuffer.allocate(float_size);
         buf.putFloat((float)x);
         buf.putFloat((float)y);
         buf.putFloat((float)z);
-        return buf;
+        return buf.array();
+    }
+
+    public byte[] GetDoubleByteBuffer()
+    {
+        ByteBuffer buf = ByteBuffer.allocate(double_size);
+        buf.putDouble(x);
+        buf.putDouble(y);
+        buf.putDouble(z);
+        return buf.array();
     }
 
     public java.lang.String toString() { return "" + x + "; " + y + "; " + z + "; "; }

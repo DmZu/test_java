@@ -1,12 +1,10 @@
 package com.dmzu.world.classes.objects;
 
-import com.dmzu.world.classes.LandMethods;
+import com.dmzu.server.AdapterToServer;
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.types.Enums;
 import com.dmzu.world.classes.types.Vec3d;
-
-import java.util.List;
 
 /**
  * Created by Людмила on 06.01.14.
@@ -126,10 +124,7 @@ public class LandObject extends BaseObject {
 
     private void ChangeCell()
     {
-        List<CharacterObject> list = LandMethods.GetConnectedPlayers(GetCellX(), GetCellY(), (short) (World.Inst().GetPropertes().get_Kvadrat_size() * 2));
-
-        for(CharacterObject ob : list)
-            ob.GetTcpClient().SendCell(GetCellX(), GetCellY());
+        AdapterToServer.UpdateCell(GetCellX(), GetCellY());
     }
 
     public Vec3d GetPos()

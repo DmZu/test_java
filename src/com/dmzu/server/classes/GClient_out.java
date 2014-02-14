@@ -17,7 +17,7 @@ public class GClient_out extends Thread {
     private Socket player_socket;
 
     private OutputStream out_s;
-    private CharacterObject character;
+    private int character_id;
 
     private int cur_kvad_x = -3200000, cur_kvad_y = -3200000;
 
@@ -54,10 +54,10 @@ public class GClient_out extends Thread {
 
     }
 
-    public void SetChar(CharacterObject char_ob)
+    public void SetChar(int char_ob)
     {
-        character = char_ob;
-        character.SetConnect(this);
+        character_id = char_ob;
+        //character_id.SetConnect(this);
         start();
     }
 
@@ -65,16 +65,9 @@ public class GClient_out extends Thread {
     {
         Send(ByteBuffer.allocate(73)
                 .put(EnumTcpCmd.PosXYZ_AXYZ_VXYZ.ToByte())
-                .putDouble(character.GetPos().x)
-                .putDouble(character.GetPos().y)
-                .putDouble(character.GetPos().z)
-                .putDouble(character.GetLookVec().x)
-                .putDouble(character.GetLookVec().y)
-                .putDouble(character.GetLookVec().z)
-                .putDouble(character.GetVelVec().x)
-                .putDouble(character.GetVelVec().y)
-                .putDouble(character.GetVelVec().z)
+                .put(AdapterToWorld.GetObjPosByteBuff(character_id))
         );
+
     }
 
     private void SendTime()
@@ -95,24 +88,21 @@ public class GClient_out extends Thread {
         buf.put(AdapterToWorld.GetDayTimeNow());
         buf.put((byte)AdapterToWorld.GetKvadratSize());
         buf.put((byte)AdapterToWorld.GetMetersInCellXY());
+        buf.put((byte)AdapterToWorld.GetMetersInCellZ());
+        buf.putShort(AdapterToWorld.GetSize());
         Send(buf);
     }
 
     private void SendLandDATA()
     {
-        int x = (character.GetCellX()/AdapterToWorld.GetKvadratSize());
-        int y = (character.GetCellY()/AdapterToWorld.GetKvadratSize());
-
-        //if(x>=0&&x<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size()&&
-                //y>=0&&y<=world.GetPropertes().get_Size()/world.GetPropertes().get_Kvadrat_size())
-        {
-        //world.GetLSize();
+        int x = (AdapterToWorld.GetCellX(character_id)/AdapterToWorld.GetKvadratSize());
+        int y = (AdapterToWorld.GetCellY(character_id)/AdapterToWorld.GetKvadratSize());
 
         for(short ix=-1; ix < 2; ix++)
             for(short iy=-1; iy < 2; iy++)
                 if(Math.abs(x + ix - cur_kvad_x)>=2 || Math.abs(y + iy - cur_kvad_y)>=2)
                     SendLandDATA(x+ix, y+iy);
-        }
+
         cur_kvad_x = x;
         cur_kvad_y = y;
     }

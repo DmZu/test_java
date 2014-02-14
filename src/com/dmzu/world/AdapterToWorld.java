@@ -2,6 +2,7 @@ package com.dmzu.world;
 
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.CharacterObject;
+import com.dmzu.world.classes.objects.abstr.DinamicObject;
 import com.dmzu.world.classes.objects.abstr.StaticObject;
 import com.dmzu.world.classes.types.ObjectID;
 import com.dmzu.world.classes.types.Vec3d;
@@ -55,17 +56,15 @@ public class AdapterToWorld {
     {
         byte[] buf = new byte[2];
 
-        buf[0] = World.Inst().GetLandCell(ix,iy).GetHeightInByte();
-        buf[1] = World.Inst().GetLandCell(ix,iy).GetType().GetByteVal();
+        if(World.Inst().GetLandCell(ix,iy) != null)
+        {
+            buf[0] = World.Inst().GetLandCell(ix,iy).GetHeightInByte();
+            buf[1] = World.Inst().GetLandCell(ix,iy).GetType().GetByteVal();
+        }
 
         return buf;
     }
-    /*
-    public static CharacterObject GetChar(String name)
-    {
-        return World.Inst().GetChar(name);
-    }
-    */
+
     public static int GetCharID(String autoriz_str)
     {
         CharacterObject ob = World.Inst().GetChar(autoriz_str.split("\n")[0]);
@@ -79,11 +78,48 @@ public class AdapterToWorld {
     }
 
 
+
     public static byte[] GetObjPosByteBuff(int id)
     {
-        byte[] buf = new byte[10];
+        StaticObject ob = ObjectID.GetObject(id);
 
-        return buf;
+        if(ob == null)
+            return new byte[0];
+
+        ByteBuffer bbuf;
+
+
+        if(ob instanceof DinamicObject)
+            bbuf = ByteBuffer.allocate(Vec3d.double_size*3);
+        else
+            bbuf = ByteBuffer.allocate(Vec3d.double_size*2);
+
+        bbuf.put(ob.GetPos().GetDoubleByteBuffer());
+        bbuf.put(ob.GetLookVec().GetDoubleByteBuffer());
+
+
+        if(ob instanceof DinamicObject)
+            bbuf.put(((DinamicObject)ob).GetVelVec().GetDoubleByteBuffer());
+
+        return bbuf.array();
+    }
+
+    public static short GetCellX(int obj_id)
+    {
+        StaticObject ob = ObjectID.GetObject(obj_id);
+        if(ob != null)
+            return ob.GetCellX();
+        else
+            return Short.MIN_VALUE;
+    }
+
+    public static short GetCellY(int obj_id)
+    {
+        StaticObject ob = ObjectID.GetObject(obj_id);
+        if(ob != null)
+            return ob.GetCellY();
+        else
+            return Short.MIN_VALUE;
     }
 
     public static void SetCharLookTo(int char_id, byte[] data)
@@ -112,6 +148,17 @@ public class AdapterToWorld {
 
             ((CharacterObject) ob).Move(buf.getDouble());
         }
+    }
+
+    public static boolean RegistrNewChar(String registr_str)
+    {
+        if(World.Inst().GetChar(registr_str.split("\n")[0]) == null)
+        {
+            new CharacterObject((byte)0, new Vec3d(0,0,0), registr_str.split("\n")[0], registr_str.split("\n")[1]);
+            return true;
+        }
+        else
+            return false;
     }
 
     public static void TextMessage(String message)

@@ -1,13 +1,11 @@
 package com.dmzu.server.classes;
 
-import com.dmzu.server.IServer;
-
 import java.net.ServerSocket;
 
 /**
  * Created by dm on 25.01.14.
  */
-public class WorldServer extends Thread implements IServer{
+public class WorldServer extends Thread {
 
 
     private int TCPServerPort = 10011;

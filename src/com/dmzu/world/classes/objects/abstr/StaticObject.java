@@ -1,13 +1,19 @@
 package com.dmzu.world.classes.objects.abstr;
 
+import com.dmzu.server.AdapterToServer;
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.types.ObjectID;
 import com.dmzu.world.classes.types.Vec3d;
+
+import java.nio.ByteBuffer;
 
 /**
  * Created by Людмила on 07.01.14.
  */
 public abstract class StaticObject extends BaseObject {
+
+    private Vec3d prev_pos=new Vec3d();
+    private Vec3d prev_look_vector=new Vec3d();
 
     private Vec3d pos;
     private Vec3d look_vector;
@@ -26,6 +32,7 @@ public abstract class StaticObject extends BaseObject {
     protected void SetLookVector(Vec3d value)
     {
         look_vector = value;
+        UpdateToServer();
     }
 
     protected void MovePos(Vec3d value)
@@ -45,7 +52,26 @@ public abstract class StaticObject extends BaseObject {
         double h = World.Inst().GetDownHeightFromPoint(GetPos());
         if(pos.z < h)
             pos.z = h;
+        UpdateToServer();
+    }
 
+    private void UpdateToServer()
+    {
+
+        if(!prev_pos.equals(pos) || !prev_look_vector.equals(look_vector))
+        {
+            ByteBuffer bbuf = ByteBuffer.allocate(Vec3d.double_size*3);
+            bbuf.put(pos.GetDoubleByteBuffer());
+            bbuf.put(look_vector.GetDoubleByteBuffer());
+            if(this instanceof DinamicObject)
+                bbuf.put(((DinamicObject)this).GetVelVec().GetDoubleByteBuffer());
+
+            AdapterToServer.UpdateObjPos(id, bbuf.array());
+        }
+
+
+        prev_pos = new Vec3d(pos);
+        prev_look_vector = new Vec3d(look_vector);
     }
 
     public int GetID()

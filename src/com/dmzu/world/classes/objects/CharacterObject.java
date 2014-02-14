@@ -1,8 +1,9 @@
 package com.dmzu.world.classes.objects;
 
-import com.dmzu.server.classes.GClient_out;
+import com.dmzu.server.AdapterToServer;
 import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.objects.abstr.LifeObject;
+import com.dmzu.world.classes.objects.abstr.StaticObject;
 import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.ArrayList;
@@ -24,8 +25,6 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
 
     private double time_to_message = 0.3d;
 
-    private GClient_out tcp_client;
-
     public CharacterObject(byte type, Vec3d pos, String name, String pass)
     {
         super(pos);
@@ -46,14 +45,16 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
         }
     }
 
+
     public boolean IsConnect()
     {
+        /*
         if(tcp_client == null)
             return false;
-        else
+        else*/
             return true;
     }
-
+/*
     public GClient_out GetTcpClient()
     {
         return tcp_client;
@@ -63,7 +64,7 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
     {
         tcp_client = client;
     }
-
+*/
     public String GetName()
     {
         return char_name;
@@ -81,6 +82,24 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
     public void SetVisibleObjects(List<BaseObject> obj_list)
     {
         visible_objs = obj_list;
+
+        int count_stat=0;
+        for(BaseObject bob : visible_objs)
+            if(bob instanceof StaticObject)
+                count_stat++;
+
+        int[] ids = new int[count_stat];
+
+        count_stat=0;
+        for(BaseObject bob : visible_objs)
+            if(bob instanceof StaticObject)
+            {
+                ids[count_stat] = ((StaticObject)bob).GetID();
+                count_stat++;
+            }
+
+        AdapterToServer.SetVisibleObjs(GetID(), ids);
+
     }
 
     public void SetHunger(double value)
