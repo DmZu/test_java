@@ -1,9 +1,10 @@
 package com.dmzu.world.classes;
 
 
-import com.dmzu.server.classes.WorldServer;
+import com.dmzu.server.AdapterToServer;
 import com.dmzu.console.IConsole;
 import com.dmzu.world.classes.objects.AnimalObject;
+import com.dmzu.world.classes.objects.ConstructionObject;
 import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
@@ -21,7 +22,7 @@ public class World extends Thread implements IAdminToWorld{
 
     private List<IConsole> out_ui = new ArrayList<IConsole>();
 
-    private ObjectsThread Land_objects, Animal_objects, Char_objects;
+    private ObjectsThread Land_objects, Animal_objects, Char_objects, Construct_objects;
 
     private LandObject[][] Land_Matrix;
 
@@ -48,11 +49,11 @@ public class World extends Thread implements IAdminToWorld{
                 e.printStackTrace();
             }
 
-            day_time_now++;
+            //day_time_now++;
 
 
             //TextMessage("time="+day_time_now);
-            GetTickTime();
+            //GetTickTime();
         }
     }
 
@@ -72,7 +73,7 @@ public class World extends Thread implements IAdminToWorld{
         props = new WorldPropertes(size);
 
         Land_Matrix = LandMethods.GenerateLandMatrix(size);
-        LandMethods.GenerateAnimals(size, size * 5);
+        LandMethods.GenerateAnimals(size, size * 1);
 
         //for(int i = 0; i < 10000; i++)
         new CharacterObject(
@@ -84,7 +85,7 @@ public class World extends Thread implements IAdminToWorld{
                 "def",
                 "111");
 
-        day_time_now = 0;
+        day_time_now = 50;
 
         TextMessage("Created Land. Name: " + name + " Size: " + size);
 
@@ -98,6 +99,8 @@ public class World extends Thread implements IAdminToWorld{
 
         Animal_objects = new ObjectsThread();
         Char_objects = new ObjectsThread();
+
+        Construct_objects = new ObjectsThread();
 
         for (int ix = 0; ix < Land_Matrix.length; ix++)
             for (int iy = 0; iy < Land_Matrix[ix].length; iy++)
@@ -113,14 +116,14 @@ public class World extends Thread implements IAdminToWorld{
         Land_objects.start();
         Animal_objects.start();
         Char_objects.start();
+        Construct_objects.start();
 
         TextMessage("Started Land. Name: " + name + " Size: " + Land_Matrix.length);
 
 
         this.start();
-        new WorldServer();
 
-
+        AdapterToServer.Start();
     }
 
     public void Stop()
@@ -139,8 +142,8 @@ public class World extends Thread implements IAdminToWorld{
 
         if(ob!=null)
         {
-            //str = "Anim="+ob.GetTickTimeSec();
-            ob.DebugOut();
+            str = "Anim="+ob.GetTickTimeSec();
+            //ob.DebugOut();
         }
 
         return str;
@@ -195,6 +198,12 @@ public class World extends Thread implements IAdminToWorld{
 
         return ob;
     }
+
+    public void AddConstruction(ConstructionObject obj)
+    {
+        Construct_objects.Add((BaseObject)obj);
+    }
+
     public void TextMessage(String message)
     {
         for(IConsole ob : out_ui)

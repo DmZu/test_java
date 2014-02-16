@@ -1,6 +1,7 @@
 package com.dmzu.server.classes;
 
 import com.dmzu.Application;
+import com.dmzu.server.AdapterToServer;
 import com.dmzu.world.AdapterToWorld;
 
 import java.io.IOException;
@@ -16,13 +17,17 @@ public class GClient_in extends Thread {
     private Socket player_socket;
     private InputStream in_s;
 
-    private GClient_out client_out;
+    //private GClient_out client_out;
 
-    private int character_id;
+    private GClient client;
 
 
-    public GClient_in(Socket p_socket) {
+
+    public GClient_in(GClient cli, Socket p_socket) {
+
         player_socket = p_socket;
+        client = cli;
+
         // из сокета клиента берём поток входящих данных
         try {
             in_s = player_socket.getInputStream();
@@ -38,9 +43,9 @@ public class GClient_in extends Thread {
             System.out.println("set buffer size error: " + e);
         } // вывод исключений
 
-        client_out = new GClient_out(p_socket);
+        //client_out = new GClient_out(p_socket);
         AdapterToWorld.TextMessage("client connected");
-        start();
+
     }
 
     public void run() {
@@ -52,7 +57,7 @@ public class GClient_in extends Thread {
 
             cmd = ReadNextCmd();
 
-            AdapterToWorld.TextMessage("CMD=" + cmd.GetCmd().ToByte());
+            //AdapterToWorld.TextMessage("CMD=" + cmd.GetCmd().ToByte());
 
             switch (cmd.GetCmd()) {
                 case Version:
@@ -62,7 +67,7 @@ public class GClient_in extends Thread {
                         is_version_ok = true;
                     }
 
-                    client_out.SendVersion();
+                    client.GetClientOut().SendVersion();
 
                     break;
 
@@ -75,13 +80,13 @@ public class GClient_in extends Thread {
                         if (id >= 0)
                         {
                             is_login_ok = true;
-                            client_out.SendAutorizationOk();
-                            character_id = id;
-                            client_out.SetChar(id);
+
+                            client.SetCharID(id);
+                            client.GetClientOut().SendAutorizationOk();
                         }
 
                         if(!is_login_ok)
-                            client_out.SendAutorizationEr();
+                            client.GetClientOut().SendAutorizationEr();
                     }
                     break;
 
@@ -90,9 +95,9 @@ public class GClient_in extends Thread {
                         String str = new String(cmd.GetData().array(), Charset.forName("UTF-32"));
 
                         if(AdapterToWorld.RegistrNewChar(str))
-                            client_out.SendRegistrationOk();
+                            client.GetClientOut().SendRegistrationOk();
                         else
-                            client_out.SendRegistrationEr();
+                            client.GetClientOut().SendRegistrationEr();
                     }
 
                     break;
@@ -115,11 +120,15 @@ public class GClient_in extends Thread {
             switch (cmd.GetCmd())
             {
                 case CharMove:
-                    AdapterToWorld.SetCharMove(character_id, cmd.GetData().array());
+                    AdapterToWorld.SetCharMove(client.GetCharID(), cmd.GetData().array());
                     break;
 
                 case CharLookTo:
-                    AdapterToWorld.SetCharLookTo(character_id, cmd.GetData().array());
+                    AdapterToWorld.SetCharLookTo(client.GetCharID(), cmd.GetData().array());
+                    break;
+
+                case CharJob:
+                    AdapterToWorld.SetCharJob(client.GetCharID(),cmd.GetData().get(0));
                     break;
 
                 default:
@@ -130,18 +139,19 @@ public class GClient_in extends Thread {
 
         }
 
-
+        AdapterToServer.DisconnectClient(client.GetCharID());
     }
 
     private ByteBuffer Read(int i) {
 
+        if(i<0)i=0;
         ByteBuffer out_buf = ByteBuffer.allocate(i);
 
         byte buf[] = new byte[i];
 
         int len = 0;
 
-        while (len < i) {
+        while (len < i && player_socket != null) {
             try {
                 len += in_s.read(buf,0,i);
 

@@ -1,9 +1,12 @@
 package com.dmzu.world.classes.objects;
 
 import com.dmzu.server.AdapterToServer;
+import com.dmzu.world.AdapterToWorld;
+import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.objects.abstr.LifeObject;
 import com.dmzu.world.classes.objects.abstr.StaticObject;
+import com.dmzu.world.classes.types.Enums;
 import com.dmzu.world.classes.types.Vec3d;
 
 import java.util.ArrayList;
@@ -24,12 +27,15 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
     private BaseObject target;
 
     private double time_to_message = 0.3d;
+    private double time_to_update_vis = 5d;
 
     public CharacterObject(byte type, Vec3d pos, String name, String pass)
     {
         super(pos);
         char_name = name;
         char_pass = pass;
+
+        SetType(Enums.ObjTps.Character);
     }
 
     @Override
@@ -37,11 +43,11 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
     {
         LifeCalc(time_sec);
 
-        time_to_message-=time_sec;
-        if(time_to_message<=0)
+        time_to_update_vis-=time_sec;
+        if(time_to_update_vis<=0)
         {
-            //World.Inst().TextMessage("POS="+GetPos());
-            time_to_message = 0.3d;
+            UpdateVizibleToServ();
+            time_to_update_vis = 5d;
         }
     }
 
@@ -83,6 +89,31 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
     {
         visible_objs = obj_list;
 
+
+
+    }
+
+    public void SetJob(byte job)
+    {
+        switch (job)
+        {
+            case 1:
+                World.Inst().GetLandCell(GetCellX(),GetCellY()).GetCell();
+                break;
+
+            case 2:
+                World.Inst().GetLandCell(GetCellX(),GetCellY()).PutCell();
+                break;
+
+            case 3:
+                ConstructionObject ob = new ConstructionObject(GetPos(),GetLookVec());
+                World.Inst().AddConstruction(ob);
+                break;
+        }
+    }
+
+    private void UpdateVizibleToServ()
+    {
         int count_stat=0;
         for(BaseObject bob : visible_objs)
             if(bob instanceof StaticObject)
@@ -91,15 +122,23 @@ public class CharacterObject extends LifeObject implements AI_in_Interface {
         int[] ids = new int[count_stat];
 
         count_stat=0;
+
+        boolean is_char_vis = false;
+
         for(BaseObject bob : visible_objs)
             if(bob instanceof StaticObject)
             {
+                if(((StaticObject)bob).GetID() == GetID())
+                    is_char_vis = true;
                 ids[count_stat] = ((StaticObject)bob).GetID();
                 count_stat++;
             }
 
-        AdapterToServer.SetVisibleObjs(GetID(), ids);
+        if(!is_char_vis)
+            World.Inst().TextMessage("no vis");
 
+
+        AdapterToServer.SetVisibleObjs(GetID(), ids);
     }
 
     public void SetHunger(double value)

@@ -54,11 +54,11 @@ public abstract class DinamicObject extends StaticObject {
 
     protected void AddForceFront(Double value)
     {
-        front_force = value;
+        front_force = value * 5;
         if(this instanceof CharacterObject)
         {
             //World.Inst().TextMessage("VEL="+d);
-            front_force*=10;
+            front_force*=2;
         }
 /*
         Vec3d d = new Vec3d(GetLookVec());

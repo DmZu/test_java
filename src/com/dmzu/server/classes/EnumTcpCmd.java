@@ -18,13 +18,17 @@ public enum EnumTcpCmd
     /// </summary>
     PosXYZ_AXYZ_VXYZ ((byte)24, (short)73),
 
+    VizibleObjs ((byte)25, (short)1025),
+    CharID ((byte)26, (short)1025),
+    CharMove ((byte)27, (short)9),
+    CharLookTo ((byte)28, (short)33),
+    CharJob ((byte)30, (short)2),
+
     LandInfo ((byte)60, (short)9),
     TimeNow ((byte)61, (short)9),
     LandData ((byte)63, (short)1025),
     LandCell ((byte)64, (short)7),
 
-    CharMove ((byte)27, (short)9),
-    CharLookTo ((byte)28, (short)33),
 
     unknown((byte)0, (short)0);
 

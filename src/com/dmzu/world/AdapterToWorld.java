@@ -104,6 +104,16 @@ public class AdapterToWorld {
         return bbuf.array();
     }
 
+    public static byte[] GetObjInfo(int obj_id)
+    {
+        ByteBuffer bbuf = ByteBuffer.allocate(2);
+        StaticObject ob = ObjectID.GetObject(obj_id);
+        if(ob != null)
+            bbuf.put(ob.GetType().GetByteVal());
+
+        return bbuf.array();
+    }
+
     public static short GetCellX(int obj_id)
     {
         StaticObject ob = ObjectID.GetObject(obj_id);
@@ -148,6 +158,14 @@ public class AdapterToWorld {
 
             ((CharacterObject) ob).Move(buf.getDouble());
         }
+    }
+
+    public static void SetCharJob(int char_id, byte job)
+    {
+        StaticObject ob = ObjectID.GetObject(char_id);
+        if(ob != null && ob instanceof CharacterObject)
+            ((CharacterObject) ob).SetJob(job);
+
     }
 
     public static boolean RegistrNewChar(String registr_str)

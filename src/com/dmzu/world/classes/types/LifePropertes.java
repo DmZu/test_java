@@ -4,6 +4,7 @@ import com.dmzu.world.classes.objects.abstr.LifeObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by d.zhukov on 22.01.14.
@@ -33,17 +34,18 @@ public class LifePropertes {
         LifePropertes la = new LifePropertes(target_obj);
 
         la.name = "def";
-        la.day_vision = 5;
-        la.night_vision = 1;
+        la.day_vision = 30;
+        la.night_vision = 5;
 
         la.AddMatForEat(Enums.GMaterials.Grass);
+
 
         target_obj.AddMaterial(Enums.GMaterials.Bone, 1000);
         target_obj.AddMaterial(Enums.GMaterials.Meat, 500);
         target_obj.AddMaterial(Enums.GMaterials.Skinn, 100);
         target_obj.AddMaterial(Enums.GMaterials.Coat, 100);
-        target_obj.AddMaterial(Enums.GMaterials.Woter, 1000);
-        target_obj.AddMaterial(Enums.GMaterials.Fat, 500);
+        target_obj.AddMaterial(Enums.GMaterials.Woter, 1000+ ((new Random()).nextInt(500)));
+        target_obj.AddMaterial(Enums.GMaterials.Fat, 500+ ((new Random()).nextInt(500)));
 
         return la;
 

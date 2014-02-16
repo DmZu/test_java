@@ -68,7 +68,7 @@ public class ObjectsThread extends Thread {
 
             while(Remove_List.size() > 0)
             {
-                World.Inst().TextMessage("Rem_list" + Remove_List.size());
+                //World.Inst().TextMessage("Rem_list" + Remove_List.size());
                 obj_list.remove(Remove_List.get(0));
                 Remove_List.remove(0);
             }

@@ -35,6 +35,7 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
     {
         super(new Vec3d(0,0,0),pos,new Vec3d(0,1,0));
         atr = LifePropertes.NewDefAnim(this);
+
     }
 
 
@@ -57,7 +58,7 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
 
 
             if(!(this instanceof CharacterObject))
-            if (RemoveMaterial(Enums.GMaterials.Fat, all_work / 1000) != 0)
+            if (RemoveMaterial(Enums.GMaterials.Fat, all_work / 10000) != 0)
             {
                 int i = GetMatCountByType(Enums.GMaterials.Bone) / 10;
 
@@ -67,7 +68,7 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
 
 
 
-            RemoveMaterial(Enums.GMaterials.Woter, all_work / 100);
+            RemoveMaterial(Enums.GMaterials.Woter, all_work / 1000);
 
 
             int woter = GetMatCountByType(Enums.GMaterials.Woter);
@@ -102,10 +103,12 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
 
 
             bio_time = 0;
+
+
+
         }
 
-        SetParamsToChild();
-
+            SetParamsToChild();
 
         if (job_time_sec > 0)
         {
@@ -149,6 +152,8 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
                 short y = (short)(GetCellY() + iy);
 
                 list.add(World.Inst().GetLandCell(x, y));
+
+                list.addAll( World.Inst().GetLandCell(x, y).GetConteiner());
             }
 
         return list;
@@ -181,6 +186,28 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
             val.set(((LandObject) target).GetPos());
 
             val.sub(GetPos());
+
+            val.normalize();
+
+
+        }
+
+        LookTo(val);
+    }
+    public void LookNoTo(BaseObject target)
+    {
+        Vec3d val = new Vec3d(1,0,0);
+
+        //if (target instanceof LandObject)
+        {
+
+
+            val.set(GetPos());
+
+            if (target instanceof LandObject)
+                val.sub(((LandObject) target).GetPos());
+            if (target instanceof StaticObject)
+                val.sub(((StaticObject) target).GetPos());
 
             val.normalize();
 
@@ -234,6 +261,9 @@ public abstract class LifeObject extends DinamicObject implements AI_out_Interfa
                 this.AddMaterial(Enums.GMaterials.Fat, food);
 
             }
+
+            if(target instanceof LandObject)
+                ((LandObject)target).SetType(Enums.CellTps.Dirt);
 
 
             job_time_sec += 2;

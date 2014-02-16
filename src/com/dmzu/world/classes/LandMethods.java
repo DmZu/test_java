@@ -43,9 +43,9 @@ public class LandMethods {
 ///Create holm
         //heights_map = AddToHeiMap(heights_map, CreateObriv(100, 5), (heights_map.length * heights_map.length) / 10000);
 
-        heights_map = AddToHeiMap(heights_map, CreateHolm(50, 10), (heights_map.length * heights_map.length) / 3000);
+        heights_map = AddToHeiMap(heights_map, CreateHolm(40, 10), (heights_map.length * heights_map.length) / 1000);
 
-        heights_map = AddToHeiMap(heights_map, CreateHolm(300, 30), (heights_map.length * heights_map.length) / 1000);
+        heights_map = AddToHeiMap(heights_map, CreateHolm(100, 20), (heights_map.length * heights_map.length) / 3000);
 
         heights_map = Smoth(heights_map);
         return heights_map;

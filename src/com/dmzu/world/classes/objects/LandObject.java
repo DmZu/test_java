@@ -1,10 +1,15 @@
 package com.dmzu.world.classes.objects;
 
 import com.dmzu.server.AdapterToServer;
+import com.dmzu.world.AdapterToWorld;
 import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.types.Enums;
+import com.dmzu.world.classes.types.MaterialMass;
 import com.dmzu.world.classes.types.Vec3d;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Людмила on 06.01.14.
@@ -16,14 +21,14 @@ public class LandObject extends BaseObject {
 
     private double timer = 0;
 
-    private static double time_for_grass_grow = 10;
+    private static double time_for_grass_grow = 50;
     private static double time_for_tree_grow = 20;
 
     public LandObject(short height_, Enums.CellTps type_, short ix, short iy)
     {
         super(ix,iy);
         SetHeight(height_);
-        type = type_;
+        SetType(type_);
 
         //SetType(type_);
     }
@@ -59,7 +64,7 @@ public class LandObject extends BaseObject {
                 timer = 0;
             }
 
-
+/*
             if (type == Enums.CellTps.Grass && timer > time_for_grass_grow)
             {
 
@@ -77,7 +82,7 @@ public class LandObject extends BaseObject {
                     World.Inst().GetLandCell(GetCellX(),GetCellY()).SetType(Enums.CellTps.Grass);
                 timer = 0;
             }
-
+*/
         }
 
     }
@@ -119,7 +124,33 @@ public class LandObject extends BaseObject {
             AddMaterial(Enums.GMaterials.Woter, 1000);
         }
 
+
+    }
+
+    public List<MaterialMass> GetCell()
+    {
+        List<MaterialMass> mat = new ArrayList<MaterialMass>();
+
+        //TODO: get material mass her;
+
+        if(GetType() == Enums.CellTps.Dirt)
+            SetHeight((short)(GetHeight()- 1));
+        else
+            SetType(Enums.CellTps.Dirt);
         ChangeCell();
+        return mat;
+    }
+
+    public boolean PutCell()
+    {
+        if(GetType() == Enums.CellTps.Dirt && GetHeight()<255)
+        {
+            SetHeight((short)(GetHeight() + 1));
+            ChangeCell();
+            return true;
+        }
+
+        return false;
     }
 
     private void ChangeCell()

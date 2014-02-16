@@ -62,5 +62,24 @@ public class Enums {
 
     }
 
+    public enum ObjTps
+    {
+        Default((byte)0),
+        Character((byte)1),
+        Animal((byte)20);
+
+
+        private byte value;
+
+        private ObjTps(byte val) {
+            this.value = val;
+        }
+        public byte GetByteVal()
+        {
+            return value;
+        }
+
+    }
+
 
 }

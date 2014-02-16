@@ -1,6 +1,7 @@
 package com.dmzu.server.classes;
 
 import com.dmzu.Application;
+import com.dmzu.server.AdapterToServer;
 import com.dmzu.world.AdapterToWorld;
 import com.dmzu.world.classes.objects.CharacterObject;
 import com.dmzu.world.classes.objects.LandObject;
@@ -9,6 +10,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
+import java.util.List;
 
 /**
  * Created by dm on 26.01.14.
@@ -17,12 +19,14 @@ public class GClient_out extends Thread {
     private Socket player_socket;
 
     private OutputStream out_s;
-    private int character_id;
+
+    private GClient client;
 
     private int cur_kvad_x = -3200000, cur_kvad_y = -3200000;
 
-    public GClient_out(Socket cli_socket)
+    public GClient_out(GClient cli, Socket cli_socket)
     {
+        client = cli;
 
         player_socket = cli_socket;
         try
@@ -37,35 +41,68 @@ public class GClient_out extends Thread {
     public void run()
     {
         SendLandInfo();
-
+        SendCharID();
         while(player_socket != null)
         {
-            SendCurPosLookVel();
+            //synchronized (client.GetUpdateList())
+            {
+                List<Integer> list = client.GetUpdateList();
+                for(int id : list)
+                {
+                    //if(id == client.GetCharID())
+                        SendCurPosLookVel(id);
+                }
+
+            //    client.ClearUpdateList();
+            }
+
+            //SendCurPosLookVel(client.GetCharID());
             SendTime();
             SendLandDATA();
 
             try {
-                Thread.currentThread().sleep(300);
+                Thread.currentThread().sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }
-
+        AdapterToServer.DisconnectClient(client.GetCharID());
     }
 
-    public void SetChar(int char_ob)
+
+    public void SendCharID()
     {
-        character_id = char_ob;
-        //character_id.SetConnect(this);
-        start();
+        ByteBuffer bbuf = ByteBuffer.allocate(5);
+
+        bbuf.put(EnumTcpCmd.CharID.ToByte());
+        bbuf.putInt(client.GetCharID());
+
+        Send(bbuf);
     }
 
-    private void SendCurPosLookVel()
+
+    public void SendVisibleObjs(int[] objs)
     {
-        Send(ByteBuffer.allocate(73)
+        ByteBuffer bbuf = ByteBuffer.allocate(objs.length*6 + 1);
+
+        bbuf.put(EnumTcpCmd.VizibleObjs.ToByte());
+
+        for(int id : objs)
+        {
+            bbuf.putInt(id);
+            bbuf.put(AdapterToWorld.GetObjInfo(id));
+        }
+
+        Send(bbuf);
+    }
+
+    private void SendCurPosLookVel(int id)
+    {
+        Send(ByteBuffer.allocate(77)
                 .put(EnumTcpCmd.PosXYZ_AXYZ_VXYZ.ToByte())
-                .put(AdapterToWorld.GetObjPosByteBuff(character_id))
+                .putInt(id)
+                .put(AdapterToWorld.GetObjPosByteBuff(id))
         );
 
     }
@@ -83,20 +120,22 @@ public class GClient_out extends Thread {
 
     private void SendLandInfo()
     {
-        ByteBuffer buf = ByteBuffer.allocate(4);
+        ByteBuffer buf = ByteBuffer.allocate(8);
         buf.put(EnumTcpCmd.LandInfo.ToByte());
         buf.put(AdapterToWorld.GetDayTimeNow());
         buf.put((byte)AdapterToWorld.GetKvadratSize());
         buf.put((byte)AdapterToWorld.GetMetersInCellXY());
         buf.put((byte)AdapterToWorld.GetMetersInCellZ());
         buf.putShort(AdapterToWorld.GetSize());
+        buf.put(AdapterToWorld.GetSeeLevel());
+
         Send(buf);
     }
 
     private void SendLandDATA()
     {
-        int x = (AdapterToWorld.GetCellX(character_id)/AdapterToWorld.GetKvadratSize());
-        int y = (AdapterToWorld.GetCellY(character_id)/AdapterToWorld.GetKvadratSize());
+        int x = (AdapterToWorld.GetCellX(client.GetCharID())/AdapterToWorld.GetKvadratSize());
+        int y = (AdapterToWorld.GetCellY(client.GetCharID())/AdapterToWorld.GetKvadratSize());
 
         for(short ix=-1; ix < 2; ix++)
             for(short iy=-1; iy < 2; iy++)
@@ -129,12 +168,14 @@ public class GClient_out extends Thread {
 
     public void SendCell(short x, short y)
     {
-        Send(ByteBuffer.allocate(7)
-                .put(EnumTcpCmd.LandCell.ToByte())
-                .putShort(x)
-                .putShort(y)
-                .put(AdapterToWorld.GetLandCellBytes(x, y))
-        );
+        if( Math.abs(x/AdapterToWorld.GetKvadratSize()-cur_kvad_x) <= 1 &&
+                Math.abs(y/AdapterToWorld.GetKvadratSize()-cur_kvad_y) <= 1)
+            Send(ByteBuffer.allocate(7)
+                    .put(EnumTcpCmd.LandCell.ToByte())
+                    .putShort(x)
+                    .putShort(y)
+                    .put(AdapterToWorld.GetLandCellBytes(x, y))
+            );
     }
 
     public void SendVersion()
@@ -153,6 +194,8 @@ public class GClient_out extends Thread {
                 .put(EnumTcpCmd.AutorizCli.ToByte())
                 .put((byte)1)
         );
+
+        start();
     }
 
     public void SendAutorizationEr()
@@ -187,7 +230,7 @@ public class GClient_out extends Thread {
         bbuf.putShort((short) buf.array().length);
         bbuf.put(buf.array());
 
-        AdapterToWorld.TextMessage("out cmd leng=" + buf.array().length);
+        //AdapterToWorld.TextMessage("out cmd leng=" + buf.array().length);
         //ByteBuffer.
         try
         {

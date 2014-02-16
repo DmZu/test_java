@@ -1,9 +1,11 @@
 package com.dmzu.world.classes.objects;
 
+import com.dmzu.world.classes.World;
 import com.dmzu.world.classes.objects.abstr.BaseObject;
 import com.dmzu.world.classes.objects.abstr.LifeObject;
 import com.dmzu.world.classes.types.Enums;
 import com.dmzu.world.classes.types.Vec3d;
+import com.dmzu.world.classes.types.WorldPropertes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,9 @@ public class AnimalObject extends LifeObject implements AI_in_Interface {
     public AnimalObject(byte type, Vec3d pos)
     {
         super(pos);
+
+        SetType(Enums.ObjTps.Animal);
+
     }
 
 
@@ -32,6 +37,23 @@ public class AnimalObject extends LifeObject implements AI_in_Interface {
         if (IsAlive())
         {
             LifeCalc(time_sec);
+
+            if(World.Inst().GetLandCell(GetCellX(), GetCellY()).GetHeight() <= World.Inst().GetPropertes().get_See_level())
+            {
+
+                for (BaseObject element : visible_objs)
+                    if (element != null && (element instanceof LandObject) && ((LandObject)element).GetHeight()>World.Inst().GetPropertes().get_See_level())
+                        target = element;
+
+                if(target!=null)
+                {
+                    LookTo(target);
+                    Move(0.2d);
+                }
+                else
+                    Move(0.2d);
+            }
+            else
 
 
             if (thirst > 0)
@@ -67,7 +89,27 @@ public class AnimalObject extends LifeObject implements AI_in_Interface {
                 }
             }
             else
-                Move(0d);
+            {
+                target = null;
+
+                for (BaseObject element : visible_objs)
+                    if (element != null && (element instanceof CharacterObject))
+                    {
+                       Vec3d v =new Vec3d(GetPos());
+                        v.sub(((CharacterObject) element).GetPos());
+
+                        if(v.length() < 50)
+                            target = element;
+                    }
+
+                if(target==null)
+                    Move(0d);
+                else
+                {
+                    LookNoTo(target);
+                    Move(1d);
+                }
+            }
         }
     }
 
@@ -83,7 +125,7 @@ public class AnimalObject extends LifeObject implements AI_in_Interface {
 
         for (BaseObject element : visible_objs)
         {
-            if (element != null && element.GetMatCountByType(material) > 0)
+            if (element != null && element.GetMatCountByType(material) > 0 && (element instanceof LandObject))
             {
                 if (obj == null) obj = element;
 

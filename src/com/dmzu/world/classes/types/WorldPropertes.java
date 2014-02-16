@@ -11,9 +11,9 @@ public class WorldPropertes {
 
     private byte see_level = 10;
 
-    private int kilogram_size = 1000;
+    private int kilogram_size = 2000;
 
-    private int kvadrat_size = 32;
+    private int kvadrat_size = 64;
 
     private short size = 0;
 
