@@ -13,7 +13,7 @@ public class WorldPropertes {
 
     private int kilogram_size = 2000;
 
-    private int kvadrat_size = 64;
+    private int kvadrat_size = 128;
 
     private short size = 0;
 
